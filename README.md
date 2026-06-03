@@ -60,9 +60,32 @@ python scripts/validate_endpoints.py 5      # first 5 only
 
 ## Current Coverage
 
-- 26 payers seeded (top MA, Medicaid MCOs, state Medicaids)
-- Includes status notes for non-functional APIs (Defacto 2024 findings)
-- Endpoint validation with response time tracking
+**359 records** covering the full CMS-regulated payer universe:
+
+| Category | Count |
+|----------|-------|
+| State Medicaid/CHIP FFS programs | 51/52 (50 states + DC + PR) |
+| Medicare Advantage organizations | 98 |
+| Medicaid Managed Care Organizations | 174 |
+| CHIP programs | 15 |
+
+**Compliance Status:**
+- ✅ Compliant (verified or with standard registration): 179
+- ⚠️ Non-compliant (violations flagged): 76
+- ❓ Needs verification: 104
+
+**Violation Types Tracked:**
+- `NO_API` — No Provider Directory API published at all
+- `REGISTRATION_BLOCKS_ACCESS` — Registration broken, effectively no public access
+- `MISSING_CRITICAL_DATA` — API exists but missing required data elements
+- `NOT_QUERYABLE` — API exists but search parameters missing/broken
+- `NOT_MACHINE_READABLE` — Only HTML directory, no FHIR/JSON API
+- `MEMBER_LOGIN_REQUIRED` — API gated behind member authentication (violates rule)
+
+**Endpoint Validation:**
+- 4 verified live (open access, no auth)
+- 15 confirmed server exists (needs app registration)
+- Response time tracking via `validation_log` table
 
 ## CMS Regulatory Reference
 
