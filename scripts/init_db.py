@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS payers (
     source TEXT,
     created_at TEXT DEFAULT (datetime('now')),
     updated_at TEXT DEFAULT (datetime('now')),
-    UNIQUE(org_name, plan_name)
 );
 
 CREATE TABLE IF NOT EXISTS validation_log (
