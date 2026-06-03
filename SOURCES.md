@@ -105,11 +105,27 @@ All payer records in this database are sourced from verified, authoritative refe
 
 ## Validation Methodology
 
-For each endpoint in the database, validation status is one of:
-- `valid` — CapabilityStatement returned successfully (FHIR server confirmed live)
-- `exists_needs_auth` — Server responds with 401/403 (exists, needs app registration)
-- `cms_sma_confirmed` — Listed in official CMS SMA Endpoint Directory as Active
-- `NULL` — Not yet probed
+Every endpoint was tested with a real HTTP GET request on 2026-06-03 using `scripts/retest_all.py`:
+
+- Target: `{api_base}/metadata` with `Accept: application/fhir+json`
+- Timeout: 20 seconds
+- User-Agent: `FHIR-Directory-Validator/1.0`
+- Redirects: followed automatically
+- Delay: 0.5s between requests
+
+Classification is based solely on actual HTTP response:
+- `valid` (12) — HTTP 200 + JSON body with `resourceType: CapabilityStatement`
+- `valid_non_fhir` (3) — HTTP 200 but response is not a CapabilityStatement
+- `auth_required` (270) — HTTP 401 or 403
+- `client_error` (17) — HTTP 4xx other than 401/403/404
+- `not_found` (54) — HTTP 404
+- `unreachable` (143) — TCP connection failed/refused/reset
+- `no_api` (28) — No api_base URL in database record
+- `timeout` (3) — No response within 20 seconds
+- `ssl_error` (2) — TLS handshake failure
+- `server_error` (1) — HTTP 5xx
+
+Raw results: `data/retest_results.json` (533 entries with status codes, response times, errors)
 
 ---
 

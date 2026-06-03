@@ -1,0 +1,530 @@
+Testing 533 payers...
+Start: 2026-06-03T17:35:48.480528+00:00
+================================================================================
+  [1/533] Aetna                                         ... ❌ not_found | HTTP 404 | 241ms
+  [2/533] Alameda Alliance for Health                   ... 🔒 auth_required | HTTP 403 | 303ms
+  [3/533] Alignment Health Plan                         ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.alignment | 19ms
+  [4/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 199ms
+  [5/533] Banner University Health Plans                ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.bannerhea | 32ms
+  [6/533] Baylor Scott & White Health Plan              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.bswhealth | 17ms
+  [7/533] Blue Cross and Blue Shield of Alabama         ... 🟡 valid_non_fhir | HTTP 200 | 193ms
+  [8/533] Blue Cross and Blue Shield of Illinois        ... ⏱️ timeout | timeout | 20044ms
+  [9/533] Blue Cross and Blue Shield of Minnesota       ... 🟡 valid_non_fhir | HTTP 200 | 347ms
+  [10/533] Blue Cross and Blue Shield of New Mexico      ... ⏱️ timeout | timeout | 20055ms
+  [11/533] Blue Cross and Blue Shield of North Carolina  ... 🚫 unreachable | HTTPSConnectionPool(host='api.bluecrossn | 43ms
+  [12/533] Blue Cross and Blue Shield of Texas           ... ✅ valid | HTTP 200 | 1426ms
+  [13/533] Blue Cross Blue Shield of Arizona             ... 🚫 unreachable | HTTPSConnectionPool(host='api.azblue.com | 26ms
+  [14/533] Blue Cross Blue Shield of Michigan            ... ✅ valid | HTTP 200 | 1717ms
+  [15/533] Blue Shield of California                     ... 💥 server_error | HTTP 500 | 378ms
+  [16/533] BlueCross BlueShield of Tennessee             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.bcbst.com | 25ms
+  [17/533] CalOptima                                     ... 🔒 auth_required | HTTP 403 | 287ms
+  [18/533] CalViva Health                                ... 🔐 ssl_error | HTTPSConnectionPool(host='fhir.calviva.o | 193ms
+  [19/533] Capital District Physicians' Health Plan, Inc ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.cdphp.com | 39ms
+  [20/533] CareOregon                                    ... 🚫 unreachable | HTTPSConnectionPool(host='api.oregonfhir | 21ms
+  [21/533] CareSource                                    ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.caresourc | 17ms
+  [22/533] CenCal Health                                 ... 🔒 auth_required | HTTP 403 | 304ms
+  [23/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 30ms
+  [24/533] Central California Alliance for Health        ... 🔒 auth_required | HTTP 403 | 291ms
+  [26/533] Cigna Corporation                             ... ✅ valid | HTTP 200 | 322ms
+  [29/533] Community Health Group                        ... 🚫 unreachable | HTTPSConnectionPool(host='api.onyxhealth | 15ms
+  [30/533] Community Health Plan of Washington (CHPW)    ... ⚠️ client_error | HTTP 400 | 109ms
+  [32/533] Cook Children's Health Plan (CCHP)            ... 🔒 auth_required | HTTP 403 | 279ms
+  [33/533] CountyCare Health Plan                        ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.170264617 | 35ms
+  [34/533] Denver Health Medical Plan                    ... 🔒 auth_required | HTTP 403 | 141ms
+  [35/533] Devoted Health                                ... 🚫 unreachable | HTTPSConnectionPool(host='api.devoted.co | 26ms
+  [38/533] Elevance Health (Anthem)                      ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.anthem.co | 19ms
+  [39/533] EmblemHealth, Inc.                            ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.emblemhea | 22ms
+  [40/533] Excellus BlueCross BlueShield                 ... 🚫 unreachable | HTTPSConnectionPool(host='api.excellusbc | 56ms
+  [41/533] Fallon Health                                 ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.fallonhea | 23ms
+  [43/533] Florida Blue                                  ... ❌ not_found | HTTP 404 | 103ms
+  [44/533] Geisinger Health Plan                         ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.geisinger | 42ms
+  [46/533] Hawaii Medical Service Association            ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.hmsa.com' | 26ms
+  [47/533] Health Alliance Plan                          ... ❌ not_found | HTTP 404 | 268ms
+  [49/533] Health Plan of San Joaquin                    ... 🔒 auth_required | HTTP 403 | 267ms
+  [50/533] Health Plan of San Mateo                      ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.hpsm.org' | 27ms
+  [51/533] Healthfirst                                   ... ❌ not_found | HTTP 404 | 142ms
+  [52/533] HealthPartners                                ... ✅ valid | HTTP 200 | 384ms
+  [53/533] Highmark Health                               ... ❌ not_found | HTTP 404 | 124ms
+  [54/533] Horizon Blue Cross Blue Shield of New Jersey  ... ✅ valid | HTTP 200 | 446ms
+  [55/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 251ms
+  [56/533] Independence Blue Cross                       ... 🚫 unreachable | HTTPSConnectionPool(host='api.ibx.com',  | 14ms
+  [57/533] Independent Health Association, Inc.          ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.independe | 25ms
+  [58/533] Inland Empire Health Plan                     ... ✅ valid | HTTP 200 | 284ms
+  [59/533] Kaiser Foundation Health Plan of Colorado, In ... 🚫 unreachable | HTTPSConnectionPool(host='api.coloradofh | 25ms
+  [60/533] Kaiser Foundation Health Plan of the Mid-Atla ... 🚫 unreachable | HTTPSConnectionPool(host='api.kp.org', p | 164ms
+  [61/533] Kaiser Foundation Health Plan of the Northwes ... 🚫 unreachable | HTTPSConnectionPool(host='api.kp.org', p | 170ms
+  [62/533] Kaiser Foundation Health Plan, Inc.           ... 🚫 unreachable | HTTPSConnectionPool(host='api.kp.org', p | 177ms
+  [64/533] L.A. Care Health Plan                         ... 🔒 auth_required | HTTP 403 | 329ms
+  [65/533] Maryland Physicians Care                      ... ❌ not_found | HTTP 404 | 92ms
+  [66/533] Mass General Brigham Health Plan              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.massgener | 8ms
+  [67/533] McLaren Health Plan                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.mclarenhe | 24ms
+  [68/533] MDwise                                        ... 🔐 ssl_error | HTTPSConnectionPool(host='fhir.mdwise.or | 126ms
+  [69/533] Medica                                        ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.medica.co | 57ms
+  [70/533] Medical Card System, Inc.                     ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.mcs.com.p | 57ms
+  [72/533] Mercy Care Plan                               ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.mercycare | 17ms
+  [73/533] MetroPlus Health Plan, Inc.                   ... 🔒 auth_required | HTTP 403 | 71ms
+  [74/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 480ms
+  [75/533] MVP Health Care                               ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.mvphealth | 432ms
+  [76/533] Neighborhood Health Plan of Rhode Island, Inc ... 🚫 unreachable | HTTPSConnectionPool(host='api.rhodeislan | 11ms
+  [77/533] PacificSource Health Plans                    ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.pacificso | 103ms
+  [78/533] Parkland Community Health Plan                ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.parklandc | 15ms
+  [79/533] Partnership HealthPlan of California          ... 🔒 auth_required | HTTP 403 | 267ms
+  [80/533] Plan de Salud Menonita                        ... 🟡 valid_non_fhir | HTTP 200 | 67ms
+  [81/533] Point32Health, Inc.                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.point32he | 12ms
+  [82/533] Presbyterian Health Plan/Presbyterian Insuran ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.phs.org', | 12ms
+  [83/533] Priority Health                               ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.priorityh | 25ms
+  [85/533] San Francisco Health Plan (SFHP)              ... 🔒 auth_required | HTTP 403 | 274ms
+  [86/533] Santa Clara Family Health Plan                ... ❌ not_found | HTTP 404 | 269ms
+  [87/533] SCAN Health Plan                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.scanhealt | 27ms
+  [88/533] Security Health Plan of Wisconsin, Inc.       ... 🚫 unreachable | HTTPSConnectionPool(host='api.wisconsinf | 10ms
+  [89/533] SelectHealth                                  ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.selecthea | 28ms
+  [90/533] Sentara Health Plans, Inc.                    ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.sentara.c | 31ms
+  [91/533] State of Alabama                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.medicaid. | 36ms
+  [92/533] State of Alaska                               ... 🚫 unreachable | HTTPSConnectionPool(host='api.alaskafhir | 9278ms
+  [94/533] State of Arkansas                             ... 🚫 unreachable | HTTPSConnectionPool(host='api.kansasfhir | 14ms
+  [95/533] State of California                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.dhcs.ca.g | 27ms
+  [96/533] State of Colorado                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.colorado. | 21ms
+  [97/533] State of Connecticut                          ... ❌ not_found | HTTP 404 | 85ms
+  [98/533] State of Florida                              ... ❌ not_found | HTTP 404 | 109ms
+  [99/533] State of Georgia                              ... 🚫 unreachable | HTTPSConnectionPool(host='api.georgiafhi | 15ms
+  [100/533] State of Idaho                                ... ✅ valid | HTTP 200 | 104ms
+  [103/533] State of Kentucky                             ... 🚫 unreachable | HTTPSConnectionPool(host='api.kentuckyfh | 17ms
+  [104/533] State of Louisiana                            ... 🚫 unreachable | HTTPSConnectionPool(host='api.louisianaf | 8ms
+  [105/533] State of Maine                                ... ❌ not_found | HTTP 404 | 1213ms
+  [106/533] State of Maryland                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.medicaid. | 20ms
+  [107/533] State of Massachusetts                        ... 🚫 unreachable | HTTPSConnectionPool(host='api.masshealth | 21ms
+  [108/533] State of Michigan                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.michigan. | 24ms
+  [111/533] State of Missouri                             ... ❌ not_found | HTTP 404 | 394ms
+  [113/533] State of Nevada                               ... 🚫 unreachable | HTTPSConnectionPool(host='api.nevadafhir | 6ms
+  [114/533] State of New York                             ... 🔒 auth_required | HTTP 403 | 96ms
+  [115/533] State of North Carolina                       ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.ncmedicai | 28ms
+  [116/533] State of North Dakota                         ... ⏱️ timeout | timeout | 20259ms
+  [118/533] State of Oklahoma                             ... 🚫 unreachable | HTTPSConnectionPool(host='api.oklahomafh | 37ms
+  [119/533] State of Oregon                               ... 🚫 unreachable | HTTPSConnectionPool(host='api.oregonfhir | 19ms
+  [120/533] State of Pennsylvania                         ... ⚠️ client_error | HTTP 400 | 2772ms
+  [121/533] State of South Carolina                       ... 🚫 unreachable | HTTPSConnectionPool(host='pd.fhir.scdhhs | 29ms
+  [122/533] State of South Dakota                         ... ❌ not_found | HTTP 404 | 373ms
+  [123/533] State of Texas                                ... 🔒 auth_required | HTTP 403 | 319ms
+  [124/533] State of Utah                                 ... 🔒 auth_required | HTTP 403 | 605ms
+  [125/533] State of Vermont                              ... 🚫 unreachable | HTTPSConnectionPool(host='api.vermontfhi | 24ms
+  [126/533] State of Washington                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.wa.gov',  | 29ms
+  [127/533] State of West Virginia                        ... 🚫 unreachable | HTTPSConnectionPool(host='api.westvirgin | 35ms
+  [128/533] State of Wisconsin                            ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.medicaid. | 27ms
+  [129/533] Texas Children's Health Plan                  ... 🔒 auth_required | HTTP 403 | 299ms
+  [132/533] UCare                                         ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.ucare.org | 59ms
+  [133/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 29ms
+  [134/533] UPMC Health Plan                              ... 🚫 unreachable | HTTPSConnectionPool(host='api.upmchealth | 57ms
+  [135/533] Virginia Premier Health Plan                  ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.virginiap | 15ms
+  [136/533] WellCare Health Plans, Inc.                   ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 29ms
+  [137/533] WellSense Health Plan (fka Boston Medical Cen ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.wellsense | 36ms
+  [138/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 110ms
+  [139/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 81ms
+  [140/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 93ms
+  [141/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 72ms
+  [142/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 61ms
+  [143/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 101ms
+  [144/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 87ms
+  [145/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 68ms
+  [146/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 98ms
+  [147/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 60ms
+  [148/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 60ms
+  [149/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 74ms
+  [150/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 77ms
+  [151/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 62ms
+  [152/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 70ms
+  [153/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 59ms
+  [154/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 92ms
+  [155/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 78ms
+  [156/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 97ms
+  [157/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 62ms
+  [158/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 62ms
+  [159/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 52ms
+  [160/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 104ms
+  [161/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 48ms
+  [162/533] AmeriHealth Caritas                           ... ❌ not_found | HTTP 404 | 92ms
+  [163/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 13ms
+  [164/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 15ms
+  [165/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 11ms
+  [166/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 9ms
+  [167/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 10ms
+  [168/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 15ms
+  [169/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 14ms
+  [170/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 9ms
+  [171/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 13ms
+  [172/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 8ms
+  [173/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 16ms
+  [174/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 13ms
+  [175/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 10ms
+  [176/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 12ms
+  [177/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 16ms
+  [178/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 13ms
+  [179/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 10ms
+  [180/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 17ms
+  [181/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 7ms
+  [182/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 15ms
+  [183/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 15ms
+  [184/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 12ms
+  [185/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 10ms
+  [186/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 10ms
+  [187/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 12ms
+  [188/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 8ms
+  [189/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 13ms
+  [190/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 11ms
+  [191/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 14ms
+  [192/533] Centene Corporation                           ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.centene.c | 15ms
+  [193/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 25ms
+  [194/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 16ms
+  [195/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 9ms
+  [196/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 9ms
+  [197/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 11ms
+  [198/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 17ms
+  [199/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 16ms
+  [200/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 17ms
+  [201/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 13ms
+  [202/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 15ms
+  [203/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 16ms
+  [204/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 10ms
+  [205/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 12ms
+  [206/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 8ms
+  [207/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 21ms
+  [208/533] Molina Healthcare                             ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.molinahea | 11ms
+  [209/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 14ms
+  [210/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 13ms
+  [211/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 12ms
+  [212/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 14ms
+  [213/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 11ms
+  [214/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 9ms
+  [215/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 15ms
+  [216/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 44ms
+  [217/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 13ms
+  [218/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 11ms
+  [219/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 18ms
+  [220/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 11ms
+  [221/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 16ms
+  [222/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 7ms
+  [223/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 17ms
+  [224/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 18ms
+  [225/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 9ms
+  [226/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 17ms
+  [227/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 14ms
+  [228/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 14ms
+  [229/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 15ms
+  [230/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 15ms
+  [231/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 7ms
+  [232/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 15ms
+  [233/533] UnitedHealthcare                              ... 🚫 unreachable | HTTPSConnectionPool(host='fhir.uhc.com', | 12ms
+  [234/533] Aetna                                         ... ❌ not_found | HTTP 404 | 284ms
+  [235/533] Aetna                                         ... ❌ not_found | HTTP 404 | 96ms
+  [236/533] Aetna                                         ... ❌ not_found | HTTP 404 | 158ms
+  [237/533] Aetna                                         ... ❌ not_found | HTTP 404 | 170ms
+  [238/533] Aetna                                         ... ❌ not_found | HTTP 404 | 93ms
+  [239/533] Aetna                                         ... ❌ not_found | HTTP 404 | 106ms
+  [240/533] Aetna                                         ... ❌ not_found | HTTP 404 | 175ms
+  [241/533] Aetna                                         ... ❌ not_found | HTTP 404 | 131ms
+  [242/533] Aetna                                         ... ❌ not_found | HTTP 404 | 120ms
+  [243/533] Aetna                                         ... ❌ not_found | HTTP 404 | 98ms
+  [244/533] Aetna                                         ... ❌ not_found | HTTP 404 | 76ms
+  [245/533] Aetna                                         ... ❌ not_found | HTTP 404 | 125ms
+  [246/533] Aetna                                         ... ❌ not_found | HTTP 404 | 102ms
+  [247/533] Aetna                                         ... ❌ not_found | HTTP 404 | 94ms
+  [248/533] Aetna                                         ... ❌ not_found | HTTP 404 | 91ms
+  [249/533] Aetna                                         ... ❌ not_found | HTTP 404 | 86ms
+  [250/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 230ms
+  [251/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 254ms
+  [252/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 129ms
+  [253/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 150ms
+  [254/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 134ms
+  [255/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 100ms
+  [256/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 126ms
+  [257/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 207ms
+  [258/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 110ms
+  [259/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 124ms
+  [260/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 113ms
+  [261/533] Humana Inc.                                   ... ⚠️ client_error | HTTP 400 | 115ms
+  [262/533] Cigna                                         ... ✅ valid | HTTP 200 | 274ms
+  [263/533] Aetna R4                                      ... ✅ valid | HTTP 200 | 7170ms
+  [264/533] State of Delaware                             ... 🚫 unreachable | HTTPSConnectionPool(host='api.delawarefh | 35ms
+  [266/533] State of Iowa                                 ... ⚠️ client_error | HTTP 400 | 2462ms
+  [267/533] State of Kansas                               ... 🚫 unreachable | HTTPSConnectionPool(host='api.kansasfhir | 17ms
+  [268/533] State of Nebraska                             ... ✅ valid | HTTP 200 | 3742ms
+  [269/533] State of New Hampshire                        ... ⚠️ client_error | HTTP 400 | 144ms
+  [270/533] State of New Jersey                           ... ✅ valid | HTTP 200 | 1727ms
+  [271/533] State of Rhode Island                         ... 🚫 unreachable | HTTPSConnectionPool(host='api.rhodeislan | 17ms
+  [274/533] State of Wyoming                              ... ✅ valid | HTTP 200 | 117ms
+  [277/533] Blue Cross Blue Shield of Florida (Florida Bl ... 🔒 auth_required | HTTP 403 | 311ms
+  [278/533] Clover Health                                 ... 🔒 auth_required | HTTP 403 | 287ms
+  [279/533] Bright Health                                 ... 🔒 auth_required | HTTP 403 | 283ms
+  [280/533] Oscar Health                                  ... 🔒 auth_required | HTTP 403 | 275ms
+  [281/533] Wellpoint (fka Amerigroup)                    ... 🔒 auth_required | HTTP 403 | 286ms
+  [282/533] Prominence Health Plan                        ... 🔒 auth_required | HTTP 403 | 282ms
+  [283/533] Zing Health                                   ... 🔒 auth_required | HTTP 403 | 263ms
+  [284/533] Clever Care Health Plan                       ... 🔒 auth_required | HTTP 403 | 277ms
+  [285/533] Alignment Healthcare (AHM)                    ... 🔒 auth_required | HTTP 403 | 294ms
+  [286/533] Devoted Health Plan                           ... 🔒 auth_required | HTTP 403 | 280ms
+  [287/533] Quartz Health Solutions                       ... 🔒 auth_required | HTTP 403 | 287ms
+  [288/533] Sanford Health Plan                           ... 🔒 auth_required | HTTP 403 | 287ms
+  [289/533] Medical Mutual of Ohio                        ... 🔒 auth_required | HTTP 403 | 278ms
+  [290/533] Regence BlueCross BlueShield                  ... 🔒 auth_required | HTTP 403 | 283ms
+  [291/533] Premera Blue Cross                            ... 🔒 auth_required | HTTP 403 | 275ms
+  [292/533] AvMed                                         ... 🔒 auth_required | HTTP 403 | 286ms
+  [293/533] Simply Healthcare (Anthem subsidiary)         ... 🔒 auth_required | HTTP 403 | 278ms
+  [294/533] CareMore Health (Elevance)                    ... 🔒 auth_required | HTTP 403 | 289ms
+  [295/533] Optimum Healthcare                            ... 🔒 auth_required | HTTP 403 | 296ms
+  [296/533] WellMed (UHC subsidiary)                      ... 🔒 auth_required | HTTP 403 | 286ms
+  [297/533] Physicians Health Plan                        ... 🔒 auth_required | HTTP 403 | 272ms
+  [298/533] Tufts Health Plan (Point32Health)             ... 🔒 auth_required | HTTP 403 | 381ms
+  [299/533] Harvard Pilgrim Health Care (Point32Health)   ... 🔒 auth_required | HTTP 403 | 283ms
+  [300/533] Martin's Point Health Care                    ... 🔒 auth_required | HTTP 403 | 272ms
+  [301/533] Group Health Cooperative (Kaiser NW)          ... 🔒 auth_required | HTTP 403 | 290ms
+  [302/533] Aspire Health Plan                            ... 🔒 auth_required | HTTP 403 | 274ms
+  [303/533] Lumeris/Essence Healthcare                    ... 🔒 auth_required | HTTP 403 | 282ms
+  [304/533] Braven Health (Horizon NJ)                    ... 🔒 auth_required | HTTP 403 | 286ms
+  [305/533] Blue KC (Blue Cross Blue Shield of Kansas Cit ... 🔒 auth_required | HTTP 403 | 278ms
+  [306/533] Capital BlueCross                             ... 🔒 auth_required | HTTP 403 | 370ms
+  [307/533] Piedmont Community Health Plan                ... 🔒 auth_required | HTTP 403 | 296ms
+  [308/533] Aultcare                                      ... 🔒 auth_required | HTTP 403 | 290ms
+  [309/533] Dean Health Plan (Quartz)                     ... 🔒 auth_required | HTTP 403 | 290ms
+  [310/533] Network Health Plan (WI)                      ... 🔒 auth_required | HTTP 403 | 278ms
+  [311/533] Gateway Health                                ... 🔒 auth_required | HTTP 403 | 394ms
+  [312/533] Viva Health (AL)                              ... 🔒 auth_required | HTTP 403 | 276ms
+  [313/533] Sunshine Health (Centene FL)                  ... 🔒 auth_required | HTTP 403 | 282ms
+  [314/533] Superior HealthPlan (Centene TX)              ... 🔒 auth_required | HTTP 403 | 291ms
+  [315/533] Fidelis Care (Centene NY)                     ... 🔒 auth_required | HTTP 403 | 272ms
+  [316/533] Health Net (Centene CA)                       ... 🔒 auth_required | HTTP 403 | 290ms
+  [317/533] Peach State Health Plan (Centene GA)          ... 🔒 auth_required | HTTP 403 | 275ms
+  [318/533] Buckeye Health Plan (Centene OH)              ... 🔒 auth_required | HTTP 403 | 272ms
+  [319/533] Home State Health (Centene MO)                ... 🔒 auth_required | HTTP 403 | 278ms
+  [320/533] Coordinated Care (Centene WA)                 ... 🔒 auth_required | HTTP 403 | 288ms
+  [321/533] Meridian Health Plan (Centene IL/MI)          ... 🔒 auth_required | HTTP 403 | 287ms
+  [322/533] IlliniCare Health (Centene IL)                ... 🔒 auth_required | HTTP 403 | 285ms
+  [323/533] PA Health & Wellness (Centene PA)             ... 🔒 auth_required | HTTP 403 | 288ms
+  [324/533] NH Healthy Families (Centene NH)              ... 🔒 auth_required | HTTP 403 | 275ms
+  [325/533] Louisiana Healthcare Connections (Centene)    ... 🔒 auth_required | HTTP 403 | 286ms
+  [326/533] Nebraska Total Care (Centene)                 ... 🔒 auth_required | HTTP 403 | 284ms
+  [327/533] Trillium Community Health Plan (Centene OR)   ... 🔒 auth_required | HTTP 403 | 279ms
+  [328/533] Ambetter (Centene ACA Exchange)               ... 🔒 auth_required | HTTP 403 | 266ms
+  [329/533] Celtic Insurance (Centene)                    ... 🔒 auth_required | HTTP 403 | 284ms
+  [330/533] Aetna Better Health DE                        ... 🔒 auth_required | HTTP 403 | 289ms
+  [331/533] Managed Health Services IN (Centene)          ... 🔒 auth_required | HTTP 403 | 277ms
+  [332/533] Managed Health Services WI (Centene)          ... 🔒 auth_required | HTTP 403 | 263ms
+  [333/533] Absolute Total Care (Centene SC)              ... 🔒 auth_required | HTTP 403 | 284ms
+  [334/533] Granite State Health Plan (Centene NH)        ... 🔒 auth_required | HTTP 403 | 279ms
+  [335/533] Magellan Complete Care (Centene)              ... 🔒 auth_required | HTTP 403 | 286ms
+  [336/533] Envolve (Centene subsidiary)                  ... 🔒 auth_required | HTTP 403 | 295ms
+  [337/533] YelowCare (CalOptima)                         ... 🔒 auth_required | HTTP 403 | 267ms
+  [338/533] PHC (Partnership HealthPlan CA)               ... 🔒 auth_required | HTTP 403 | 284ms
+  [339/533] Health Plan of Nevada (UHC)                   ... 🔒 auth_required | HTTP 403 | 290ms
+  [340/533] Arizona Complete Health (Centene AZ)          ... 🔒 auth_required | HTTP 403 | 283ms
+  [341/533] Magnolia Health (Centene MS)                  ... 🔒 auth_required | HTTP 403 | 293ms
+  [342/533] Allwell (Centene Medicare)                    ... 🔒 auth_required | HTTP 403 | 283ms
+  [343/533] Prestige Health Choice (Molina FL)            ... 🔒 auth_required | HTTP 403 | 281ms
+  [344/533] Affinity Health Plan (Molina NY)              ... 🔒 auth_required | HTTP 403 | 307ms
+  [345/533] CHIP - Alabama (ALL Kids)                     ... 🔒 auth_required | HTTP 403 | 298ms
+  [346/533] CHIP - Arizona (KidsCare)                     ... 🔒 auth_required | HTTP 403 | 294ms
+  [347/533] CHIP - California (Medi-Cal for Children)     ... 🔒 auth_required | HTTP 403 | 288ms
+  [348/533] CHIP - Colorado (CHP+)                        ... 🔒 auth_required | HTTP 403 | 299ms
+  [349/533] CHIP - Connecticut (HUSKY B)                  ... 🔒 auth_required | HTTP 403 | 306ms
+  [350/533] CHIP - Florida (KidCare)                      ... 🔒 auth_required | HTTP 403 | 288ms
+  [351/533] CHIP - Georgia (PeachCare)                    ... 🔒 auth_required | HTTP 403 | 285ms
+  [352/533] CHIP - Illinois (All Kids)                    ... 🔒 auth_required | HTTP 403 | 275ms
+  [353/533] CHIP - Indiana (Hoosier Healthwise)           ... 🔒 auth_required | HTTP 403 | 263ms
+  [354/533] CHIP - Massachusetts (MassHealth)             ... 🔒 auth_required | HTTP 403 | 295ms
+  [355/533] CHIP - New York (Child Health Plus)           ... 🔒 auth_required | HTTP 403 | 294ms
+  [356/533] CHIP - Ohio (Healthy Start)                   ... 🔒 auth_required | HTTP 403 | 281ms
+  [357/533] CHIP - Pennsylvania (CHIP)                    ... 🔒 auth_required | HTTP 403 | 300ms
+  [358/533] CHIP - Texas (CHIP/STAR)                      ... 🔒 auth_required | HTTP 403 | 302ms
+  [359/533] CHIP - Virginia (FAMIS)                       ... 🔒 auth_required | HTTP 403 | 286ms
+  [360/533] GlobalHealth                                  ... 🔒 auth_required | HTTP 403 | 297ms
+  [361/533] Healthfirst Medicare Plan                     ... 🔒 auth_required | HTTP 403 | 288ms
+  [362/533] CDPHP Medicare Advantage                      ... 🔒 auth_required | HTTP 403 | 284ms
+  [363/533] Priority Health Medicare                      ... 🔒 auth_required | HTTP 403 | 286ms
+  [364/533] UPMC for Life                                 ... 🔒 auth_required | HTTP 403 | 289ms
+  [365/533] ConnectiCare                                  ... 🔒 auth_required | HTTP 403 | 298ms
+  [367/533] Network Health Medicare Advantage Plans       ... 🔒 auth_required | HTTP 403 | 275ms
+  [368/533] LIFE Geisinger                                ... 🔒 auth_required | HTTP 403 | 291ms
+  [369/533] MediGold                                      ... 🔒 auth_required | HTTP 403 | 267ms
+  [370/533] Blue Cross & Blue Shield of Rhode Island      ... 🔒 auth_required | HTTP 403 | 283ms
+  [371/533] Martin's Point Generations Advantage          ... 🔒 auth_required | HTTP 403 | 298ms
+  [372/533] Select Health                                 ... 🔒 auth_required | HTTP 403 | 291ms
+  [373/533] VNS Health Medicare                           ... 🔒 auth_required | HTTP 403 | 276ms
+  [374/533] Providence Medicare Advantage Plans           ... 🔒 auth_required | HTTP 403 | 294ms
+  [375/533] Allina Health Aetna Medicare                  ... 🔒 auth_required | HTTP 403 | 296ms
+  [376/533] CareFirst BlueCross BlueShield Medicare Advan ... 🔒 auth_required | HTTP 403 | 271ms
+  [377/533] VIVA Medicare                                 ... 🔒 auth_required | HTTP 403 | 287ms
+  [378/533] Imperial Health Plan of California, Inc.      ... 🔒 auth_required | HTTP 403 | 290ms
+  [379/533] Capital Blue Cross                            ... 🔒 auth_required | HTTP 403 | 284ms
+  [380/533] Astiva Health                                 ... 🔒 auth_required | HTTP 403 | 294ms
+  [381/533] Leon Health, Inc.                             ... 🔒 auth_required | HTTP 403 | 293ms
+  [382/533] United Mine Workers of America Health & Retir ... 🔒 auth_required | HTTP 403 | 278ms
+  [383/533] CommunityCare Senior Health Plan (HMO)        ... 🔒 auth_required | HTTP 403 | 289ms
+  [384/533] Health First Health Plans, Inc.               ... 🔒 auth_required | HTTP 403 | 309ms
+  [385/533] Blue Cross of Idaho                           ... 🔒 auth_required | HTTP 403 | 293ms
+  [386/533] SummaCare Medicare Advantage Plans            ... 🔒 auth_required | HTTP 403 | 283ms
+  [387/533] ATRIO Health Plans                            ... 🔒 auth_required | HTTP 403 | 289ms
+  [388/533] L.A. Care Health Plan                         ... 🔒 auth_required | HTTP 403 | 285ms
+  [389/533] Jefferson Health Plans                        ... 🔒 auth_required | HTTP 403 | 272ms
+  [390/533] Elderplan                                     ... 🔒 auth_required | HTTP 403 | 297ms
+  [391/533] Doctors HealthCare Plans, Inc.                ... 🔒 auth_required | HTTP 403 | 350ms
+  [392/533] Quartz Medicare Advantage (HMO)               ... 🔒 auth_required | HTTP 403 | 275ms
+  [393/533] BayCare Health Plans                          ... 🔒 auth_required | HTTP 403 | 286ms
+  [394/533] Solis Health Plans                            ... 🔒 auth_required | HTTP 403 | 277ms
+  [395/533] Ultimate Health Plans                         ... 🔒 auth_required | HTTP 403 | 278ms
+  [396/533] Medical Associates Health Plan, Inc.          ... 🔒 auth_required | HTTP 403 | 294ms
+  [397/533] Sharp Health Plan                             ... 🔒 auth_required | HTTP 403 | 289ms
+  [398/533] CalOptima Health PACE                         ... 🔒 auth_required | HTTP 403 | 271ms
+  [399/533] Banner Medicare Advantage                     ... 🔒 auth_required | HTTP 403 | 287ms
+  [400/533] Arkansas Blue Medicare                        ... 🔒 auth_required | HTTP 403 | 303ms
+  [401/533] Johns Hopkins Advantage MD                    ... 🔒 auth_required | HTTP 403 | 284ms
+  [402/533] Memorial Hermann Health Plan                  ... 🔒 auth_required | HTTP 403 | 293ms
+  [403/533] Health New England Medicare Advantage Plans   ... 🔒 auth_required | HTTP 403 | 292ms
+  [404/533] PrimeTime Health Plan                         ... 🔒 auth_required | HTTP 403 | 272ms
+  [405/533] Alterwood Advantage                           ... 🔒 auth_required | HTTP 403 | 283ms
+  [406/533] CareOregon Advantage                          ... 🔒 auth_required | HTTP 403 | 289ms
+  [407/533] Peak Health                                   ... 🔒 auth_required | HTTP 403 | 290ms
+  [408/533] UCLA Health Medicare Advantage Plan           ... 🔒 auth_required | HTTP 403 | 282ms
+  [409/533] VillageCareMAX                                ... 🔒 auth_required | HTTP 403 | 293ms
+  [410/533] MyTruAdvantage                                ... 🔒 auth_required | HTTP 403 | 286ms
+  [411/533] Sentara PACE                                  ... 🔒 auth_required | HTTP 403 | 272ms
+  [412/533] Provider Partners Health Plans                ... 🔒 auth_required | HTTP 403 | 299ms
+  [413/533] eternalHealth                                 ... 🔒 auth_required | HTTP 403 | 295ms
+  [414/533] CHRISTUS Health Advantage                     ... 🔒 auth_required | HTTP 403 | 274ms
+  [415/533] Iowa Health Advantage                         ... 🔒 auth_required | HTTP 403 | 310ms
+  [416/533] Mass Advantage                                ... 🔒 auth_required | HTTP 403 | 442ms
+  [417/533] Gold Kidney Health Plan                       ... 🔒 auth_required | HTTP 403 | 282ms
+  [418/533] Champion Heath Plan                           ... 🔒 auth_required | HTTP 403 | 286ms
+  [419/533] Longevity Health                              ... 🔒 auth_required | HTTP 403 | 301ms
+  [420/533] Aspirus Health Plan                           ... 🔒 auth_required | HTTP 403 | 284ms
+  [421/533] Clear Spring Health                           ... 🔒 auth_required | HTTP 403 | 278ms
+  [422/533] CCHP (Chinese Community Health Plan)          ... 🔒 auth_required | HTTP 403 | 288ms
+  [423/533] Elevate Medicare Advantage                    ... 🔒 auth_required | HTTP 403 | 290ms
+  [424/533] NY Hotel Trades Council and Hotel Assn. of NY ... 🔒 auth_required | HTTP 403 | 274ms
+  [425/533] Cox HealthPlans                               ... 🔒 auth_required | HTTP 403 | 292ms
+  [426/533] Verda Health Plan of Texas                    ... 🔒 auth_required | HTTP 403 | 299ms
+  [427/533] Communicare Advantage                         ... 🔒 auth_required | HTTP 403 | 309ms
+  [428/533] PruittHealth Premier                          ... 🔒 auth_required | HTTP 403 | 287ms
+  [429/533] Simpra Advantage                              ... 🔒 auth_required | HTTP 403 | 289ms
+  [430/533] Align Senior Care                             ... 🔒 auth_required | HTTP 403 | 300ms
+  [431/533] Upper Peninsula Health Plan (UPHP) MI Coordin ... 🔒 auth_required | HTTP 403 | 284ms
+  [432/533] Liberty Medicare Advantage                    ... 🔒 auth_required | HTTP 403 | 280ms
+  [433/533] Texas Independence Health Plan                ... 🔒 auth_required | HTTP 403 | 284ms
+  [434/533] Arkansas Superior Select Health Plans         ... 🔒 auth_required | HTTP 403 | 299ms
+  [435/533] PrimeWest Health                              ... 🔒 auth_required | HTTP 403 | 294ms
+  [436/533] AlohaCare                                     ... 🔒 auth_required | HTTP 403 | 282ms
+  [437/533] AllCare Advantage                             ... 🔒 auth_required | HTTP 403 | 353ms
+  [438/533] McLaren Medicare                              ... 🔒 auth_required | HTTP 403 | 293ms
+  [439/533] Valor Health Plan                             ... 🔒 auth_required | HTTP 403 | 290ms
+  [440/533] Hamaspik, Inc.                                ... 🔒 auth_required | HTTP 403 | 394ms
+  [441/533] Perennial Advantage                           ... 🔒 auth_required | HTTP 403 | 287ms
+  [442/533] El Paso Health Medicare Advantage             ... 🔒 auth_required | HTTP 403 | 270ms
+  [443/533] Troy Medicare                                 ... 🔒 auth_required | HTTP 403 | 261ms
+  [444/533] Union Health Service, Inc.                    ... 🔒 auth_required | HTTP 403 | 279ms
+  [445/533] South Country Health Alliance                 ... 🔒 auth_required | HTTP 403 | 296ms
+  [446/533] Samaritan Advantage Health Plans              ... 🔒 auth_required | HTTP 403 | 288ms
+  [447/533] Florida Complete Care                         ... 🔒 auth_required | HTTP 403 | 286ms
+  [448/533] C and O Employees' Hospital Association       ... 🔒 auth_required | HTTP 403 | 294ms
+  [449/533] NHC Advantage                                 ... 🔒 auth_required | HTTP 403 | 291ms
+  [450/533] Fenyx Health                                  ... 🔒 auth_required | HTTP 403 | 280ms
+  [451/533] Abilis Health (HMO SNP)                       ... 🔒 auth_required | HTTP 403 | 290ms
+  [452/533] ProCare Advantage                             ... 🔒 auth_required | HTTP 403 | 302ms
+  [453/533] Kern Family Health Care Medicare (D-SNP)      ... 🔒 auth_required | HTTP 403 | 274ms
+  [454/533] Consolidated Assoc Of Railroad Employees Hc   ... 🔒 auth_required | HTTP 403 | 349ms
+  [455/533] AgeRight Advantage                            ... 🔒 auth_required | HTTP 403 | 296ms
+  [456/533] Community Care                                ... 🔒 auth_required | HTTP 403 | 275ms
+  [457/533] Nascentia Health Plus                         ... 🔒 auth_required | HTTP 403 | 378ms
+  [459/533] KeyCare Advantage                             ... 🔒 auth_required | HTTP 403 | 288ms
+  [460/533] Healthy Mississippi, Inc.                     ... 🔒 auth_required | HTTP 403 | 282ms
+  [461/533] CenCal CareConnect                            ... 🔒 auth_required | HTTP 403 | 318ms
+  [462/533] Itasca Medical Care/IMCare Classic            ... 🔒 auth_required | HTTP 403 | 289ms
+  [463/533] SECUR Health Plan                             ... 🔒 auth_required | HTTP 403 | 306ms
+  [464/533] Elite Health Plan, Inc.                       ... 🔒 auth_required | HTTP 403 | 277ms
+  [465/533] Anthem HealthKeepers (VA)                     ... 🔒 auth_required | HTTP 403 | 299ms
+  [466/533] Anthem Blue Cross Cal MediConnect             ... 🔒 auth_required | HTTP 403 | 267ms
+  [467/533] Simply Healthcare Plans (FL)                  ... 🔒 auth_required | HTTP 403 | 267ms
+  [468/533] HealthSpring (TN)                             ... 🔒 auth_required | HTTP 403 | 265ms
+  [469/533] Freedom Health (FL)                           ... 🔒 auth_required | HTTP 403 | 280ms
+  [470/533] Optimum HealthCare (FL)                       ... 🔒 auth_required | HTTP 403 | 253ms
+  [471/533] Coventry Health Care                          ... 🔒 auth_required | HTTP 403 | 278ms
+  [472/533] WellPoint (Various states)                    ... 🔒 auth_required | HTTP 403 | 260ms
+  [473/533] Access Health CT                              ... 🔒 auth_required | HTTP 403 | 270ms
+  [474/533] Jai Medical Systems (MD)                      ... 🔒 auth_required | HTTP 403 | 286ms
+  [475/533] Johns Hopkins HealthCare (MD/DC)              ... 🔒 auth_required | HTTP 403 | 287ms
+  [476/533] Passport Health Plan (KY)                     ... 🔒 auth_required | HTTP 403 | 273ms
+  [477/533] PHP (Physicians Health Plan MI)               ... 🔒 auth_required | HTTP 403 | 290ms
+  [478/533] Providence Health Plan (OR)                   ... 🔒 auth_required | HTTP 403 | 280ms
+  [479/533] Total Health Care (MI)                        ... 🔒 auth_required | HTTP 403 | 273ms
+  [480/533] Trusted Health Plan (DC)                      ... 🔒 auth_required | HTTP 403 | 293ms
+  [481/533] VNSNY CHOICE (NY)                             ... 🔒 auth_required | HTTP 403 | 277ms
+  [482/533] YourCare Health Plan (NY)                     ... 🔒 auth_required | HTTP 403 | 271ms
+  [483/533] Hamaspik Choice (NY)                          ... 🔒 auth_required | HTTP 403 | 282ms
+  [484/533] Fidelis (NY)                                  ... 🔒 auth_required | HTTP 403 | 295ms
+  [485/533] VillageCare (NY)                              ... 🔒 auth_required | HTTP 403 | 291ms
+  [486/533] Senior Whole Health (MA/NY)                   ... 🔒 auth_required | HTTP 403 | 289ms
+  [487/533] Commonwealth Care Alliance (MA)               ... 🔒 auth_required | HTTP 403 | 288ms
+  [488/533] ConnectiCare (CT)                             ... 🔒 auth_required | HTTP 403 | 276ms
+  [489/533] Tufts Health Public Plans (MA)                ... 🔒 auth_required | HTTP 403 | 380ms
+  [490/533] Community Care Alliance (TX)                  ... 🔒 auth_required | HTTP 403 | 297ms
+  [491/533] RiverSpring Health Plans (NY)                 ... 🔒 auth_required | HTTP 403 | 279ms
+  [492/533] Centers Plan for Healthy Living (NY)          ... 🔒 auth_required | HTTP 403 | 268ms
+  [493/533] AgeWell New York                              ... 🔒 auth_required | HTTP 403 | 274ms
+  [494/533] HealthRight 360 (CA)                          ... 🔒 auth_required | HTTP 403 | 378ms
+  [495/533] San Mateo Health Commission                   ... 🔒 auth_required | HTTP 403 | 281ms
+  [496/533] Kern Health Systems (CA)                      ... 🔒 auth_required | HTTP 403 | 283ms
+  [497/533] Local Initiative Health Authority (CA)        ... 🔒 auth_required | HTTP 403 | 283ms
+  [498/533] Health Net Community Solutions (CA)           ... 🔒 auth_required | HTTP 403 | 287ms
+  [499/533] Valley Health Plan (CA)                       ... 🔒 auth_required | HTTP 403 | 293ms
+  [500/533] Western Health Advantage (CA)                 ... 🔒 auth_required | HTTP 403 | 278ms
+  [501/533] Sharp Health Plan (CA)                        ... 🔒 auth_required | HTTP 403 | 294ms
+  [502/533] CHRISTUS Health Plan (TX/LA)                  ... 🔒 auth_required | HTTP 403 | 281ms
+  [503/533] Dell Children's Health Plan (TX)              ... 🔒 auth_required | HTTP 403 | 279ms
+  [504/533] FirstCare Health Plans (TX)                   ... 🔒 auth_required | HTTP 403 | 260ms
+  [505/533] Scott and White Health Plan (TX)              ... 🔒 auth_required | HTTP 403 | 265ms
+  [506/533] Sendero Health Plans (TX)                     ... 🔒 auth_required | HTTP 403 | 261ms
+  [507/533] CommunityCare Managed Healthcare Plans (OK)   ... 🔒 auth_required | HTTP 403 | 293ms
+  [508/533] Health Choice Oklahoma                        ... 🔒 auth_required | HTTP 403 | 260ms
+  [509/533] SoonerCare Choice (OK)                        ... 🔒 auth_required | HTTP 403 | 272ms
+  [510/533] Heritage Health Systems (NE)                  ... 🔒 auth_required | HTTP 403 | 258ms
+  [511/533] Health Alliance Medical Plans (IL)            ... 🔒 auth_required | HTTP 403 | 274ms
+  [512/533] HAP Midwest Health Plan (MI)                  ... 🔒 auth_required | HTTP 403 | 266ms
+  [513/533] Sparrow PHP (MI)                              ... 🔒 auth_required | HTTP 403 | 263ms
+  [514/533] Blue Care Network (MI)                        ... 🔒 auth_required | HTTP 403 | 268ms
+  [515/533] Magellan Health Services                      ... 🔒 auth_required | HTTP 403 | 267ms
+  [516/533] Beacon Health Options                         ... 🔒 auth_required | HTTP 403 | 266ms
+  [517/533] New Directions Behavioral Health              ... 🔒 auth_required | HTTP 403 | 260ms
+  [518/533] Optum Behavioral Health                       ... 🔒 auth_required | HTTP 403 | 259ms
+  [519/533] Cenpatico Behavioral Health                   ... 🔒 auth_required | HTTP 403 | 257ms
+  [520/533] Colorado Access                               ... 🔒 auth_required | HTTP 403 | 263ms
+  [521/533] Rocky Mountain Health Plans (CO)              ... 🔒 auth_required | HTTP 403 | 264ms
+  [522/533] Friday Health Plans (CO)                      ... 🔒 auth_required | HTTP 403 | 261ms
+  [523/533] Sutter Health Plus (CA)                       ... 🔒 auth_required | HTTP 403 | 256ms
+  [524/533] SIHO Insurance Services (IN)                  ... 🔒 auth_required | HTTP 403 | 284ms
+  [525/533] MHS Indiana (Centene)                         ... 🔒 auth_required | HTTP 403 | 267ms
+  [526/533] CareSource Indiana                            ... 🔒 auth_required | HTTP 403 | 262ms
+  [527/533] Anthem Indiana Medicaid                       ... 🔒 auth_required | HTTP 403 | 269ms
+  [528/533] Oklahoma Complete Health (UHC)                ... 🔒 auth_required | HTTP 403 | 289ms
+  [529/533] Healthy Blue NC                               ... 🔒 auth_required | HTTP 403 | 280ms
+  [530/533] Healthy Blue SC                               ... 🔒 auth_required | HTTP 403 | 269ms
+  [531/533] Healthy Blue NE                               ... 🔒 auth_required | HTTP 403 | 275ms
+  [532/533] AmeriHealth Caritas Iowa                      ... 🔒 auth_required | HTTP 403 | 276ms
+  [533/533] Iowa Total Care (Centene)                     ... 🔒 auth_required | HTTP 403 | 330ms
+
+================================================================================
+Updating database with real results...
+
+================================================================================
+RESULTS SUMMARY
+================================================================================
+Total payers tested: 533
+Tested at: 2026-06-03T17:43:09.606820+00:00
+
+  auth_required            :  270 (50.7%)
+  unreachable              :  143 (26.8%)
+  not_found                :   54 (10.1%)
+  no_api                   :   28 (5.3%)
+  client_error             :   17 (3.2%)
+  valid                    :   12 (2.3%)
+  valid_non_fhir           :    3 (0.6%)
+  timeout                  :    3 (0.6%)
+  ssl_error                :    2 (0.4%)
+  server_error             :    1 (0.2%)
+
+Results saved to: /host/home/Projects/provider-directory-db/scripts/../data/retest_results.json

@@ -68,25 +68,28 @@ payers (
 
 ## Validation Status Values
 
-| Status | Meaning |
-|--------|---------|
-| `valid` | FHIR CapabilityStatement returned (200 OK) |
-| `cms_sma_confirmed` | Listed as Active in CMS SMA Endpoint Directory |
-| `exists_needs_auth` | Server responds 401/403 |
-| `unreachable_from_probe` | Connection refused/timeout from our IP |
-| `not_found` | 404 — URL may have changed |
-| `no_endpoint_to_test` | No api_base URL available |
-| `error` | Server returned 5xx |
-| `timeout` | No response within 10s |
+| Status | Count | Meaning |
+|--------|-------|---------|
+| `valid` | 12 | FHIR CapabilityStatement returned (200 + valid JSON) |
+| `valid_non_fhir` | 3 | HTTP 200 but not a CapabilityStatement |
+| `auth_required` | 270 | Server responds 401/403 (needs registration) |
+| `client_error` | 17 | Server responds 4xx other (400/405/etc) |
+| `unreachable` | 143 | Connection refused/reset/failed |
+| `not_found` | 54 | HTTP 404 — URL has changed |
+| `no_api` | 28 | No api_base URL in record |
+| `timeout` | 3 | No response within 20 seconds |
+| `ssl_error` | 2 | TLS certificate invalid/expired |
+| `server_error` | 1 | HTTP 5xx — server broken |
 
 ## Scripts
 
 | Script | Purpose | When to run |
 |--------|---------|-------------|
 | `scripts/init_db.py` | Create/reset schema | First setup only |
+| `scripts/retest_all.py` | Real HTTP test ALL endpoints, update DB | Primary validation |
 | `scripts/import_defacto.py` | Import Defacto 2024 spreadsheet | When Defacto updates |
 | `scripts/collect_endpoints.py` | Seed known payer endpoints | Initial setup |
-| `scripts/validate_endpoints.py` | Hit /metadata on all endpoints | After any bulk import |
+| `scripts/validate_endpoints.py` | Hit /metadata on all endpoints | Quick spot-check |
 | `scripts/deep_scrape.py` | Discover endpoints via probing | Periodic discovery |
 | `scripts/discover_all.py` | Background mass validation | When many unknowns exist |
 

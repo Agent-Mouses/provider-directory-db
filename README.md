@@ -12,65 +12,84 @@ The CMS Interoperability and Patient Access Final Rule (CMS-9115-F) requires Med
 
 `data/provider_directory.db` — SQLite
 
-**533 records | 408 unique organizations | 100% validated**
+**533 records | 408 unique organizations | All real-tested 2026-06-03**
 
-## Coverage
-
-| Category | Count |
-|----------|-------|
-| State Medicaid FFS programs | 51 (all 50 + DC) |
-| Medicare Advantage organizations | 174 |
-| Medicaid MCOs (national + regional) | ~200 |
-| CHIP programs | 15 |
-| Federal (CMS, VA) | 2 |
-
-## Compliance Status
+## Compliance Status (real HTTP + DNS tests)
 
 | Status | Count | % |
 |--------|-------|---|
-| ✅ Compliant (open access) | 69 | 13% |
-| ✅ Compliant (with registration) | 395 | 74% |
-| ⚠️ Non-compliant | 68 | 13% |
-| ❓ Unknown | 1 | <1% |
+| COMPLIANT (verified live FHIR, open access) | 36 | 6.8% |
+| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 423 | 79.4% |
+| NON_COMPLIANT (no API or not publicly accessible) | 74 | 13.9% |
 
-## Validation Results (all 533 probed)
+## Validation Results (all 533 tested)
 
-| Status | Count | Meaning |
-|--------|-------|---------|
-| `cms_sma_confirmed` | 41 | Official CMS directory says Active |
-| `valid` | 6 | CapabilityStatement returned (open access) |
-| `exists_needs_auth` | 268 | Server responds 401/403 |
-| `unreachable_from_probe` | 126 | IP-restricted |
-| `not_found` | 46 | URL may have changed |
-| `no_endpoint_to_test` | 28 | No API published |
-| `error`/`timeout` | 18 | Server issues |
+| Status | Count | How verified |
+|--------|-------|---|
+| `auth_required` | 359 | HTTP 401/403 returned (server exists) |
+| `dns_failure` | 46 | Published URL does not resolve in DNS |
+| `ip_restricted` | 43 | DNS resolves but connection refused/timeout (WAF/VPN) |
+| `valid` | 33 | FHIR CapabilityStatement returned (200 + valid JSON) |
+| `no_api` | 28 | No api_base URL in record |
+| `client_error` | 17 | HTTP 4xx (server exists, path issue) |
+| `valid_non_fhir` | 7 | HTTP 200 but not a CapabilityStatement |
 
-## Violations Tracked
+## Verified Live FHIR Endpoints (14 unique)
+
+All return CapabilityStatement with fhirVersion 4.0.1:
+
+| Organization | API Base |
+|---|---|
+| Aetna/CVS Health | https://fhir-ehr.cerner.com/r4/aetna |
+| Blue Cross and Blue Shield of Texas | https://cmsinterop.tmhp.com/tmhp/fhir/pd/R4 |
+| Blue Cross Blue Shield of Michigan | https://api.interopstation.com/mdhhs/fhir |
+| CareSource | https://orchestrateserver.caresource.careevolution.com/api/fhir/provider-directory |
+| Cigna | https://fhir.cigna.com/ProviderDirectory/v1 |
+| HealthPartners | https://api-developerportal.healthpartners.com/interop/external/fhir |
+| Horizon BCBS New Jersey | https://api.interopstation.com/njios/fhir |
+| Inland Empire Health Plan | https://fhir.iehp.org/provider-directory/ |
+| State of Arkansas | https://fite.ar-prd.gw02.abacusinsights.ai/provider-directory |
+| State of Idaho | https://api-idmedicaid.safhir.io/v1/api/provider-directory |
+| State of Nebraska | https://dhhs-api.ne.gov/dhhs/trading-partner/api/cmsi/provider/1.0.0 |
+| State of New Jersey | https://api.interopstation.com/njios/fhir |
+| State of Washington | https://wa.fhir.mhbapp.com/pd/api/v1 |
+| State of Wyoming | https://wy.fhir.mhbapp.com/pd/api/v1 |
+
+## Non-Compliance Violations (74 payers)
 
 | Violation | Count | Meaning |
 |-----------|-------|---------|
-| `MISSING_CRITICAL_DATA` | 39 | API exists but missing required data |
-| `NO_API` | 13 | No API published at all |
-| `REGISTRATION_BLOCKS_ACCESS` | 8 | Registration broken/blocked |
-| `NOT_QUERYABLE` | 5 | Search parameters missing |
-| `NOT_MACHINE_READABLE` | 3 | Web HTML only, no FHIR API |
+| NOT_PUBLICLY_ACCESSIBLE | 46 | Published URL does not resolve (DNS failure) |
+| NO_API | 13 | No API endpoint published at all |
+| REGISTRATION_BLOCKS_ACCESS | 6 | Developer registration broken/blocked |
+| MISSING_CRITICAL_DATA | 4 | API exists but missing required data |
+| NOT_MACHINE_READABLE | 3 | Web HTML only, no FHIR API |
+
+## Data Sources
+
+See [SOURCES.md](SOURCES.md) for full citations.
+
+| Source | Records |
+|--------|---------|
+| Defacto Health 2024 | 230 |
+| CMS Universe Expansion (MCOs, CHIP, states) | 160 |
+| CMS MA Plan Directory 2026-05 (official) | 105 |
+| CMS SMA Endpoint Directory (official) | 36 |
+| Automated Discovery | 2 |
 
 ## Usage
 
 ```bash
 pip install -r requirements.txt
 
-# Initialize database (first time)
+# Real-test all endpoints (writes to DB + data/retest_results.json)
+python scripts/retest_all.py
+
+# Discover new endpoints for broken payers
+python scripts/discover_new_endpoints.py
+
+# Initialize database (first time only)
 python scripts/init_db.py
-
-# Import Defacto 2024 data
-python scripts/import_defacto.py
-
-# Validate all endpoints
-python scripts/validate_endpoints.py
-
-# Deep discovery (background)
-nohup python scripts/discover_all.py > data/discovery.log 2>&1 &
 ```
 
 ## Query Examples
@@ -79,25 +98,15 @@ nohup python scripts/discover_all.py > data/discovery.log 2>&1 &
 import sqlite3
 conn = sqlite3.connect('data/provider_directory.db')
 
-# All verified live endpoints
-conn.execute("SELECT org_name, api_base FROM payers WHERE last_validated_status='valid'")
+# All verified live FHIR endpoints
+conn.execute("SELECT org_name, api_base, fhir_version FROM payers WHERE last_validated_status='valid'")
 
 # Non-compliant payers
 conn.execute("SELECT org_name, violation_type, violation_detail FROM payers WHERE compliance_flag='NON_COMPLIANT'")
 
-# All state Medicaid APIs
-conn.execute("SELECT org_name, api_base, last_validated_status FROM payers WHERE source='cms_sma_directory'")
+# All payers with confirmed server existence
+conn.execute("SELECT org_name, api_base FROM payers WHERE compliance_flag IN ('COMPLIANT', 'COMPLIANT_WITH_REGISTRATION')")
 ```
-
-## Data Sources
-
-See [SOURCES.md](SOURCES.md) for full citations.
-
-1. **CMS SMA Endpoint Directory** (official) — State Medicaid FHIR API URLs
-2. **CMS MA Plan Directory 2026-05** (official) — All MA organizations
-3. **Defacto Health 2024** — Top 137 payers with compliance scores
-4. **CMS Universe Expansion** — MCOs, CHIP, supplementary state data
-5. **Automated Discovery** — FHIR /metadata probing and validation
 
 ## Regulatory Reference
 
