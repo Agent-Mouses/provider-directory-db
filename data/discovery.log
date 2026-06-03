@@ -1,0 +1,18 @@
+[2026-06-03T14:13:21.969658] Starting endpoint discovery...
+[2026-06-03T14:13:21.972010] Probing 257 orgs with 10 threads...
+  ... 50/257 probed (0 found so far)
+  ... 100/257 probed (0 found so far)
+  ... 150/257 probed (0 found so far)
+  ... 200/257 probed (0 found so far)
+  ... 250/257 probed (0 found so far)
+
+[2026-06-03T14:16:41.087766] Storing 0 discoveries...
+
+============================================================
+DISCOVERY COMPLETE: 0 live | 0 auth-gated | 257 not found
+DB total: 533
+  COMPLIANT                          : 53
+  COMPLIANT_WITH_REGISTRATION        : 126
+  NON_COMPLIANT                      : 89
+  UNKNOWN                            : 265
+[2026-06-03T14:16:41.094703] Done.
