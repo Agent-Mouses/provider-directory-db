@@ -4,7 +4,7 @@
 
 A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API endpoints** — their availability, compliance status, and verification results.
 
-Developed by the [Mullen Institute for Health Workforce Equity](https://gwmi.org) at the George Washington University Milken Institute School of Public Health.
+Developed by the [Mullen Institute for Health Workforce Equity](https://gwhwi.org) at the George Washington University Milken Institute School of Public Health.
 
 > **Read [AGENTS.md](AGENTS.md) before making changes.**
 
