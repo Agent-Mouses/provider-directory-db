@@ -28,9 +28,9 @@ One row = one payer plan/product line. A parent organization (e.g., Centene) may
 
 | Status | Count | % |
 |--------|-------|---|
-| COMPLIANT (verified live FHIR, open access) | 36 | 6.8% |
-| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 423 | 79.4% |
-| NON_COMPLIANT (no API or not publicly accessible) | 74 | 13.9% |
+| COMPLIANT (verified live FHIR, open access) | 39 | 7.3% |
+| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 419 | 78.6% |
+| NON_COMPLIANT (no API or not publicly accessible) | 75 | 14.1% |
 
 ## Validation Results (all 533 tested)
 
@@ -65,14 +65,14 @@ All return CapabilityStatement with fhirVersion 4.0.1:
 | State of Washington | https://wa.fhir.mhbapp.com/pd/api/v1 |
 | State of Wyoming | https://wy.fhir.mhbapp.com/pd/api/v1 |
 
-## Non-Compliance Violations (74 payers)
+## Non-Compliance Violations (75 payers)
 
 | Violation | Count | Meaning |
 |-----------|-------|---------|
 | NOT_PUBLICLY_ACCESSIBLE | 46 | Published URL does not resolve (DNS failure) |
-| NO_API | 13 | No API endpoint published at all |
+| NO_API | 14 | No API endpoint published at all |
 | REGISTRATION_BLOCKS_ACCESS | 6 | Developer registration broken/blocked |
-| MISSING_CRITICAL_DATA | 4 | API exists but missing required data |
+| MISSING_CRITICAL_DATA | 5 | API exists but returns errors/missing data |
 | NOT_MACHINE_READABLE | 3 | Web HTML only, no FHIR API |
 
 ## Data Sources
