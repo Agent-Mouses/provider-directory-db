@@ -1,6 +1,10 @@
-# Provider Directory API Database
+# CMS Provider Directory API Database
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API endpoints** — their availability, compliance status, and verification results.
+
+Developed by the [Mullen Institute for Health Workforce Equity](https://publichealth.gwu.edu/mullen-institute-health-workforce-equity) at the George Washington University Milken Institute School of Public Health.
 
 > **Read [AGENTS.md](AGENTS.md) before making changes.**
 
@@ -8,11 +12,17 @@ A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API
 
 The CMS Interoperability and Patient Access Final Rule (CMS-9115-F) requires Medicare Advantage organizations, Medicaid programs, and CHIP plans to publish Provider Directory APIs using FHIR R4. This repo collects, validates, and monitors those endpoints across the entire regulated universe.
 
+This database supports research on payer interoperability compliance, health workforce data accessibility, and the infrastructure available for provider directory data exchange.
+
 ## Database
 
 `data/provider_directory.db` — SQLite
 
 **533 records | 408 unique organizations | All real-tested 2026-06-03**
+
+### Unit of Analysis
+
+One row = one payer plan/product line. A parent organization (e.g., Centene) may have multiple rows for each subsidiary plan brand (Ambetter, WellCare, etc.) sharing the same API endpoint.
 
 ## Compliance Status (real HTTP + DNS tests)
 
@@ -123,3 +133,14 @@ conn.execute("SELECT org_name, api_base FROM payers WHERE compliance_flag IN ('C
 - HL7 FHIR R4 (Release 4.0.1)
 - HL7 US Core IG STU 6.1.0
 - HL7 Da Vinci PDex Plan Net IG STU 1.2.0
+
+## Citation
+
+```
+Mullen Institute for Health Workforce Equity. (2026). CMS Provider Directory API
+Database. George Washington University. https://github.com/Agent-Mouses/provider-directory-db
+```
+
+## License
+
+This work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [LICENSE](LICENSE).

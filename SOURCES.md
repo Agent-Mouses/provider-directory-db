@@ -1,5 +1,7 @@
 # Data Sources
 
+Compiled by the Mullen Institute for Health Workforce Equity, George Washington University.
+
 All payer records in this database are sourced from verified, authoritative references. Each record includes `source`, `source_detail`, `source_url`, and `source_date` fields.
 
 ---
