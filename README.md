@@ -4,7 +4,7 @@
 
 A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API endpoints** — their availability, compliance status, and verification results.
 
-Developed by the [Mullen Institute for Health Workforce Equity](https://gwhwi.org) at the George Washington University Milken Institute School of Public Health.
+Developed by the [Mullan Institute for Health Workforce Equity](https://gwhwi.org) at the George Washington University Milken Institute School of Public Health.
 
 > **Read [AGENTS.md](AGENTS.md) before making changes.**
 
@@ -137,7 +137,7 @@ conn.execute("SELECT org_name, api_base FROM payers WHERE compliance_flag IN ('C
 ## Citation
 
 ```
-Mullen Institute for Health Workforce Equity. (2026). CMS Provider Directory API
+Mullan Institute for Health Workforce Equity. (2026). CMS Provider Directory API
 Database. George Washington University. https://github.com/hltiunn/provider-directory-db
 ```
 
