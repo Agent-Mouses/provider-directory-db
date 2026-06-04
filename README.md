@@ -29,8 +29,8 @@ One row = one payer plan/product line. A parent organization (e.g., Centene) may
 | Status | Count | % |
 |--------|-------|---|
 | COMPLIANT (verified live FHIR, open access) | 39 | 7.3% |
-| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 419 | 78.6% |
-| NON_COMPLIANT (no API or not publicly accessible) | 75 | 14.1% |
+| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 421 | 79.0% |
+| NON_COMPLIANT (no API or not publicly accessible) | 73 | 13.7% |
 
 ## Validation Results (all 533 tested)
 
@@ -44,28 +44,30 @@ One row = one payer plan/product line. A parent organization (e.g., Centene) may
 | `client_error` | 17 | HTTP 4xx (server exists, path issue) |
 | `valid_non_fhir` | 7 | HTTP 200 but not a CapabilityStatement |
 
-## Verified Live FHIR Endpoints (14 unique)
+## Verified Live FHIR Endpoints (16 unique)
 
-All return CapabilityStatement with fhirVersion 4.0.1:
+All confirmed via real HTTP test returning valid FHIR data or CapabilityStatement:
 
 | Organization | API Base |
 |---|---|
 | Aetna/CVS Health | https://fhir-ehr.cerner.com/r4/aetna |
-| Blue Cross and Blue Shield of Texas | https://cmsinterop.tmhp.com/tmhp/fhir/pd/R4 |
+| Blue Cross and Blue Shield of Alabama | https://alohr.esante.us/public/providers |
 | Blue Cross Blue Shield of Michigan | https://api.interopstation.com/mdhhs/fhir |
 | CareSource | https://orchestrateserver.caresource.careevolution.com/api/fhir/provider-directory |
 | Cigna | https://fhir.cigna.com/ProviderDirectory/v1 |
+| Community Health Plan of Washington | https://wa.fhir.mhbapp.com/pd/api/v1 |
 | HealthPartners | https://api-developerportal.healthpartners.com/interop/external/fhir |
 | Horizon BCBS New Jersey | https://api.interopstation.com/njios/fhir |
 | Inland Empire Health Plan | https://fhir.iehp.org/provider-directory/ |
+| Kaiser Foundation Health Plan | https://developer.kp.org/fhir/provider-directory |
+| Plan de Salud Menonita | https://fhir.menonita.com/provider-directory/ |
 | State of Arkansas | https://fite.ar-prd.gw02.abacusinsights.ai/provider-directory |
 | State of Idaho | https://api-idmedicaid.safhir.io/v1/api/provider-directory |
+| State of Maine | https://maineproviderdirectory.verityanalytics.org/fhir/Practitioner |
 | State of Nebraska | https://dhhs-api.ne.gov/dhhs/trading-partner/api/cmsi/provider/1.0.0 |
-| State of New Jersey | https://api.interopstation.com/njios/fhir |
-| State of Washington | https://wa.fhir.mhbapp.com/pd/api/v1 |
 | State of Wyoming | https://wy.fhir.mhbapp.com/pd/api/v1 |
 
-## Non-Compliance Violations (75 payers)
+## Non-Compliance Violations (73 payers)
 
 | Violation | Count | Meaning |
 |-----------|-------|---------|
