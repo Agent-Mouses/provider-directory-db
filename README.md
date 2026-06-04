@@ -138,7 +138,7 @@ conn.execute("SELECT org_name, api_base FROM payers WHERE compliance_flag IN ('C
 
 ```
 Mullen Institute for Health Workforce Equity. (2026). CMS Provider Directory API
-Database. George Washington University. https://github.com/Agent-Mouses/provider-directory-db
+Database. George Washington University. https://github.com/hltiunn/provider-directory-db
 ```
 
 ## License
