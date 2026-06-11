@@ -14,7 +14,7 @@ This is a database of **every health insurance company in the United States that
 
 Think of it like a phone book for healthcare providers, but instead of paper, it's digital data that computers can read automatically.
 
-**We tested all 535 of them** to see which ones actually work.
+**We tested all 540 of them** to see which ones actually work.
 
 ## Why Does It Matter?
 
@@ -26,11 +26,11 @@ Since 2021, the federal government (CMS) requires health insurers — including 
 
 | Status | Count | What It Means |
 |--------|:-----:|---------------|
-| ✅ Fully working | 39 (7%) | Anyone can access the data right now |
-| 🟡 Exists but requires registration | 423 (79%) | The system is running, but you need to sign up first |
-| ❌ Not working | 73 (14%) | No functional API, or the published address doesn't work |
+| ✅ Fully working | 74 (14%) | Anyone can access the data right now |
+| 🟡 Exists but requires registration | 377 (70%) | The system is running, but you need to sign up first |
+| ❌ Not working | 89 (16%) | No functional API, or the published address doesn't work |
 
-**535 total entries** covering **410 unique health insurance organizations** — tested June 2026.
+**540 total entries** covering **410+ unique health insurance organizations** — last validated June 11, 2026.
 
 ## What's Inside the Database?
 
@@ -47,7 +47,7 @@ The database (`data/provider_directory.db`) is a SQLite file. Each row represent
 | `fhir_version` | Which version of the FHIR standard they use |
 | `violation_type` | For non-compliant plans: what's wrong |
 
-**All 31 data fields are 100% complete** — no missing values.
+**All data fields are verified** — no fabricated or guessed values. Where information cannot be confirmed from public sources, it is marked honestly (e.g., `UNDISCOVERABLE` for EINs not findable in public records).
 
 ## How We Verified Each Entry
 
@@ -55,11 +55,13 @@ Every single record was tested with a real HTTP request. Here's what the test re
 
 | Result | What Happened | Implication |
 |--------|---------------|-------------|
-| `valid` | Server returned proper FHIR data | ✅ Fully working |
-| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials |
-| `dns_failure` | The published URL doesn't exist on the internet | ❌ Completely broken |
-| `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible |
-| `no_api` | No URL was ever published | ❌ Never implemented |
+| `valid` | Server returned proper FHIR data | ✅ Fully working (74) |
+| `valid_non_fhir` | Server responded but not standard FHIR format | ✅ Working, non-standard (4) |
+| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (377) |
+| `dns_failure` | The published URL doesn't exist on the internet | ❌ Completely broken (48) |
+| `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible (8) |
+| `no_api` | No URL was ever published | ❌ Never implemented (30) |
+| `client_error` | Server returned unexpected errors | ❌ Broken (3) |
 
 ## Data Sources
 
@@ -71,7 +73,7 @@ We compiled data from four official and verified sources:
 | CMS Universe Expansion | MCOs, CHIP, state Medicaid programs | 160 |
 | CMS MA Plan Directory | Official Medicare Advantage list (2026) | 105 |
 | CMS SMA Endpoint Directory | Official state Medicaid endpoints | 36 |
-| DNS Verification | Manually discovered endpoints | 4 |
+| DNS Verification | Manually discovered endpoints | 9 |
 
 See [SOURCES.md](SOURCES.md) for full citations.
 
