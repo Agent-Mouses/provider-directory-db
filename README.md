@@ -24,24 +24,30 @@ Since 2021, the federal government (CMS) requires health insurers — including 
 
 ## What Did We Find?
 
-| Status | Count | What It Means |
-|--------|:-----:|---------------|
-| ✅ Server confirmed reachable | 533 (98.7%) | Endpoint responds to HTTP requests |
-| ❌ No API / Unreachable | 7 (1.3%) | No functional endpoint (territories + defunct plans) |
+We tested every payer in two steps:
 
-**540 total entries** covering **410+ unique health insurance organizations** — last validated June 11, 2026.
+### Step 1: Does the server exist?
 
-### But Can You Actually Get Provider Data?
+We sent an HTTP request to each payer's published API address.
 
-| Data Access | Count | What It Means |
-|-------------|:-----:|---------------|
-| ✅ Open access — verified real data | 11 (2%) | NPIs cross-verified against CMS NPPES Registry |
-| 🔒 Behind auth wall | 516 (96%) | Server exists but requires OAuth registration first |
-| ❓ Server errors | 4 (<1%) | HTTP 500 or timeout |
-| ⚠️ Empty responses | 2 (<1%) | Returns empty Bundle (NJ — possible staging API) |
-| ❌ No API at all | 7 (1%) | Territories (Guam, USVI) + defunct/tiny plans |
+| Result | Count | Meaning |
+|--------|:-----:|---------|
+| ✅ Yes, server responds | 533 (98.7%) | The URL is real and the server is running |
+| ❌ No server found | 7 (1.3%) | No working URL exists (US territories + defunct plans) |
 
-**Key finding:** While 98.7% of payers have a server running, only **2% provide openly accessible, verified real provider data**. The other 96% require OAuth app registration — which CMS rule 85 FR 25543 arguably prohibits for Provider Directory APIs.
+### Step 2: Can you actually get provider data?
+
+For the 533 that responded, we tried to query real provider records.
+
+| Result | Count | Meaning |
+|--------|:-----:|---------|
+| ✅ Real data returned | 11 (2%) | We received real doctor names/NPIs and verified them against the national registry |
+| 🔒 Blocked — login required | 516 (96%) | Server is there but demands OAuth credentials before showing any data |
+| ⚠️ Server errors or empty | 6 (1%) | Server broke (4) or returned nothing (2 — New Jersey) |
+
+**Bottom line:** 98.7% of payers technically have a server running. But only **2% actually let you see provider data without registering for credentials first.** The other 96% put real data behind an authentication wall.
+
+This matters because CMS rule 85 FR 25543 states Provider Directory APIs must be "publicly accessible" — yet nearly all payers require app-level OAuth registration before returning any data.
 
 To run the audit yourself: `python scripts/audit_data_quality.py --all`
 
