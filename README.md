@@ -108,17 +108,34 @@ Every single record was tested with a real HTTP request. Here's what the test re
 
 ## Data Sources
 
-We compiled data from four official and verified sources:
+Our database covers four types of CMS-regulated payers. Each type has a **listing source** (how we know the payer exists and must comply) and an **API source** (how we found their FHIR endpoint URL).
 
-| Source | What It Is | Records |
-|--------|------------|:-------:|
-| DeFACTO Health 2024 | Industry-standard interoperability directory | 230 |
-| CMS Universe Expansion | MCOs, CHIP, state Medicaid programs | 160 |
-| CMS MA Plan Directory | Official Medicare Advantage list (2026) | 105 |
-| CMS SMA Endpoint Directory | Official state Medicaid endpoints | 36 |
-| Availity/Edifecs/Conduent Discovery | Platform-level endpoint verification | 110+ corrected |
+### By Payer Type
 
-See [SOURCES.md](SOURCES.md) for full citations.
+| Payer Type | Count | Listing Source (who must comply) | API Endpoint Source (where's their FHIR URL) |
+|------------|:-----:|----------------------------------|----------------------------------------------|
+| **Medicare Advantage** | 152 | CMS MA Plan Directory PUF (primary) — [cms.gov](https://www.cms.gov/data-research/statistics-trends-and-reports/medicare-advantagepart-d-contract-and-enrollment-data/ma-plan-directory) | Availity platform discovery + DeFACTO 2024 |
+| **Medicaid MCO** | 194 | CMS Managed Care Enrollment Report — [data.medicaid.gov](https://data.medicaid.gov) | Edifecs/Availity/Conduent platform discovery |
+| **CHIP** | 15 | CMS Universe (42 CFR § 457.1233) | Same as Medicaid (often shared infrastructure) |
+| **Dual (MA + Medicaid)** | 55 | Both CMS MA Directory + Medicaid enrollment data | DeFACTO 2024 + platform discovery |
+| **State Medicaid FFS** | ~50 | CMS SMA Endpoint Directory (official) — [GitHub](https://cmsgov.github.io/SMA-Endpoint-Directory/) | CMS SMA Directory provides URLs directly |
+| **Other** | ~74 | DeFACTO Health 2024 research | DeFACTO 2024 + manual verification |
+
+### Primary Sources Explained
+
+| Source | What It Is | Authority Level |
+|--------|------------|:---------------:|
+| [CMS MA Plan Directory](https://www.cms.gov/files/zip/ma-plan-directory.zip) | Official list of all MA/Cost/PACE/Demo contracts (923 contracts, 312 parent orgs) — updated monthly | 🏛️ Official CMS |
+| [CMS SMA Endpoint Directory](https://cmsgov.github.io/SMA-Endpoint-Directory/) | Official state Medicaid FHIR endpoints with URLs, auth info, FHIR versions | 🏛️ Official CMS |
+| [CMS Managed Care Enrollment](https://data.medicaid.gov) | All Medicaid MCO contracts with enrollment counts | 🏛️ Official CMS |
+| [DeFACTO Health 2024](https://defacto.health/2024/06/24/state-of-provider-directory-apis-2024/) | Industry research testing top 137 payer APIs | 📊 Industry Research |
+| Availity/Edifecs/Conduent Discovery | Platform-level endpoint verification (2026-06-11) | 🔬 Our verification |
+
+### Why the listing source matters
+
+The **listing source** establishes legal obligation. If a payer appears in the CMS MA Plan Directory, they are **legally required** by 42 CFR § 422.120 to publish a Provider Directory API. Our database documents whether they are meeting that obligation.
+
+See [SOURCES.md](SOURCES.md) for full citations and methodology.
 
 ## How to Use This Database
 
