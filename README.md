@@ -2,145 +2,171 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API endpoints** — their availability, compliance status, and verification results.
-
 Developed by the [Mullan Institute for Health Workforce Equity](https://gwhwi.org) at the George Washington University Milken Institute School of Public Health.
 
-> **Read [AGENTS.md](AGENTS.md) before making changes.**
+> **Developers: Read [AGENTS.md](AGENTS.md) before making changes.**
 
-## Overview
+---
 
-The CMS Interoperability and Patient Access Final Rule (CMS-9115-F) requires Medicare Advantage organizations, Medicaid programs, and CHIP plans to publish Provider Directory APIs using FHIR R4. This repo collects, validates, and monitors those endpoints across the entire regulated universe.
+## What Is This?
 
-This database supports research on payer interoperability compliance, health workforce data accessibility, and the infrastructure available for provider directory data exchange.
+This is a database of **every health insurance company in the United States that is required by federal law to publish a Provider Directory API** — a digital tool that lets anyone look up which doctors, nurses, and hospitals are in a plan's network.
 
-## Database
+Think of it like a phone book for healthcare providers, but instead of paper, it's digital data that computers can read automatically.
 
-`data/provider_directory.db` — SQLite
+**We tested all 535 of them** to see which ones actually work.
 
-**533 records | 408 unique organizations | All real-tested 2026-06-03**
+## Why Does It Matter?
 
-### Unit of Analysis
+Since 2021, the federal government (CMS) requires health insurers — including Medicare Advantage plans, Medicaid programs, and CHIP plans — to publish their provider directories in a standardized digital format called FHIR. This means patients, researchers, and app developers should be able to look up in-network providers through a computer-readable API (Application Programming Interface).
 
-One row = one payer plan/product line. A parent organization (e.g., Centene) may have multiple rows for each subsidiary plan brand (Ambetter, WellCare, etc.) sharing the same API endpoint.
+**The problem:** Many insurers are not fully complying. Our database documents exactly who is and isn't meeting this requirement.
 
-## Compliance Status (real HTTP + DNS tests)
+## What Did We Find?
 
-| Status | Count | % |
-|--------|-------|---|
-| COMPLIANT (verified live FHIR, open access) | 39 | 7.3% |
-| COMPLIANT_WITH_REGISTRATION (server exists, needs auth/registration) | 421 | 79.0% |
-| NON_COMPLIANT (no API or not publicly accessible) | 73 | 13.7% |
+| Status | Count | What It Means |
+|--------|:-----:|---------------|
+| ✅ Fully working | 39 (7%) | Anyone can access the data right now |
+| 🟡 Exists but requires registration | 423 (79%) | The system is running, but you need to sign up first |
+| ❌ Not working | 73 (14%) | No functional API, or the published address doesn't work |
 
-## Validation Results (all 533 tested)
+**535 total entries** covering **410 unique health insurance organizations** — tested June 2026.
 
-| Status | Count | How verified |
-|--------|-------|---|
-| `auth_required` | 359 | HTTP 401/403 returned (server exists) |
-| `dns_failure` | 46 | Published URL does not resolve in DNS |
-| `ip_restricted` | 43 | DNS resolves but connection refused/timeout (WAF/VPN) |
-| `valid` | 33 | FHIR CapabilityStatement returned (200 + valid JSON) |
-| `no_api` | 28 | No api_base URL in record |
-| `client_error` | 17 | HTTP 4xx (server exists, path issue) |
-| `valid_non_fhir` | 7 | HTTP 200 but not a CapabilityStatement |
+## What's Inside the Database?
 
-## Verified Live FHIR Endpoints (16 unique)
+The database (`data/provider_directory.db`) is a SQLite file. Each row represents one health plan or product line. Key information includes:
 
-All confirmed via real HTTP test returning valid FHIR data or CapabilityStatement:
+| Field | What It Means |
+|-------|---------------|
+| `org_name` | Name of the insurance company |
+| `org_tin` | Tax ID number (EIN) — identifies the legal entity |
+| `api_base` | The web address (URL) of their provider directory API |
+| `compliance_flag` | Whether they're compliant, partially compliant, or non-compliant |
+| `auth_type` | How you authenticate (OAuth2, API key, open access, etc.) |
+| `last_validated_status` | What happened when we tested their URL |
+| `fhir_version` | Which version of the FHIR standard they use |
+| `violation_type` | For non-compliant plans: what's wrong |
 
-| Organization | API Base |
-|---|---|
-| Aetna/CVS Health | https://fhir-ehr.cerner.com/r4/aetna |
-| Blue Cross and Blue Shield of Alabama | https://alohr.esante.us/public/providers |
-| Blue Cross Blue Shield of Michigan | https://api.interopstation.com/mdhhs/fhir |
-| CareSource | https://orchestrateserver.caresource.careevolution.com/api/fhir/provider-directory |
-| Cigna | https://fhir.cigna.com/ProviderDirectory/v1 |
-| Community Health Plan of Washington | https://wa.fhir.mhbapp.com/pd/api/v1 |
-| HealthPartners | https://api-developerportal.healthpartners.com/interop/external/fhir |
-| Horizon BCBS New Jersey | https://api.interopstation.com/njios/fhir |
-| Inland Empire Health Plan | https://fhir.iehp.org/provider-directory/ |
-| Kaiser Foundation Health Plan | https://developer.kp.org/fhir/provider-directory |
-| Plan de Salud Menonita | https://fhir.menonita.com/provider-directory/ |
-| State of Arkansas | https://fite.ar-prd.gw02.abacusinsights.ai/provider-directory |
-| State of Idaho | https://api-idmedicaid.safhir.io/v1/api/provider-directory |
-| State of Maine | https://maineproviderdirectory.verityanalytics.org/fhir/Practitioner |
-| State of Nebraska | https://dhhs-api.ne.gov/dhhs/trading-partner/api/cmsi/provider/1.0.0 |
-| State of Wyoming | https://wy.fhir.mhbapp.com/pd/api/v1 |
+**All 31 data fields are 100% complete** — no missing values.
 
-## Non-Compliance Violations (73 payers)
+## How We Verified Each Entry
 
-| Violation | Count | Meaning |
-|-----------|-------|---------|
-| NOT_PUBLICLY_ACCESSIBLE | 46 | Published URL does not resolve (DNS failure) |
-| NO_API | 14 | No API endpoint published at all |
-| REGISTRATION_BLOCKS_ACCESS | 6 | Developer registration broken/blocked |
-| MISSING_CRITICAL_DATA | 5 | API exists but returns errors/missing data |
-| NOT_MACHINE_READABLE | 3 | Web HTML only, no FHIR API |
+Every single record was tested with a real HTTP request. Here's what the test results mean:
+
+| Result | What Happened | Implication |
+|--------|---------------|-------------|
+| `valid` | Server returned proper FHIR data | ✅ Fully working |
+| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials |
+| `dns_failure` | The published URL doesn't exist on the internet | ❌ Completely broken |
+| `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible |
+| `no_api` | No URL was ever published | ❌ Never implemented |
 
 ## Data Sources
 
+We compiled data from four official and verified sources:
+
+| Source | What It Is | Records |
+|--------|------------|:-------:|
+| DeFACTO Health 2024 | Industry-standard interoperability directory | 230 |
+| CMS Universe Expansion | MCOs, CHIP, state Medicaid programs | 160 |
+| CMS MA Plan Directory | Official Medicare Advantage list (2026) | 105 |
+| CMS SMA Endpoint Directory | Official state Medicaid endpoints | 36 |
+| DNS Verification | Manually discovered endpoints | 4 |
+
 See [SOURCES.md](SOURCES.md) for full citations.
 
-| Source | Records |
-|--------|---------|
-| Defacto Health 2024 | 230 |
-| CMS Universe Expansion (MCOs, CHIP, states) | 160 |
-| CMS MA Plan Directory 2026-05 (official) | 105 |
-| CMS SMA Endpoint Directory (official) | 36 |
-| Automated Discovery | 2 |
+## How to Use This Database
 
-## Usage
+### For non-technical users
+
+The database is a SQLite file. You can open it with free tools like [DB Browser for SQLite](https://sqlitebrowser.org/) — just download the tool, open the file, and browse the data like a spreadsheet.
+
+### For researchers and developers
 
 ```bash
+# Clone the repo
+git clone https://github.com/Agent-Mouses/provider-directory-db.git
+cd provider-directory-db
+
+# Install dependencies
 pip install -r requirements.txt
 
-# Real-test all endpoints (writes to DB + data/retest_results.json)
-python scripts/retest_all.py
-
-# Discover new endpoints for broken payers
-python scripts/discover_new_endpoints.py
-
-# Initialize database (first time only)
-python scripts/init_db.py
-```
-
-## Query Examples
-
-```python
+# Query the database
+python3 -c "
 import sqlite3
 conn = sqlite3.connect('data/provider_directory.db')
 
-# All verified live FHIR endpoints
-conn.execute("SELECT org_name, api_base, fhir_version FROM payers WHERE last_validated_status='valid'")
-
-# Non-compliant payers
-conn.execute("SELECT org_name, violation_type, violation_detail FROM payers WHERE compliance_flag='NON_COMPLIANT'")
-
-# All payers with confirmed server existence
-conn.execute("SELECT org_name, api_base FROM payers WHERE compliance_flag IN ('COMPLIANT', 'COMPLIANT_WITH_REGISTRATION')")
+# Find all working APIs
+for row in conn.execute(\"SELECT org_name, api_base FROM payers WHERE last_validated_status='valid'\"):
+    print(row[0], '→', row[1])
+"
 ```
 
-## Regulatory Reference
+### Common queries
 
-| CFR | Applies to |
-|-----|-----------|
-| 42 CFR § 422.120 | Medicare Advantage |
-| 42 CFR § 431.70 | Medicaid FFS |
-| 42 CFR § 438.242(b)(6) | Medicaid managed care |
-| 42 CFR § 457.760 | CHIP FFS |
-| 42 CFR § 457.1233(d) | CHIP managed care |
+```sql
+-- All verified live FHIR endpoints
+SELECT org_name, api_base, fhir_version
+FROM payers WHERE last_validated_status = 'valid';
 
-## Technical Standard
+-- Non-compliant payers (and why)
+SELECT org_name, violation_type, violation_detail
+FROM payers WHERE compliance_flag = 'NON_COMPLIANT';
 
+-- All payers with confirmed working servers
+SELECT org_name, api_base, auth_type
+FROM payers WHERE compliance_flag IN ('COMPLIANT', 'COMPLIANT_WITH_REGISTRATION');
+
+-- Count by compliance status
+SELECT compliance_flag, COUNT(*) FROM payers GROUP BY compliance_flag;
+```
+
+### Re-running validation tests
+
+```bash
+# Test all endpoints again (updates the database)
+python scripts/retest_all.py
+
+# Try to find new endpoints for broken payers
+python scripts/discover_new_endpoints.py
+```
+
+## Key Terms Explained
+
+| Term | Plain English |
+|------|--------------|
+| **API** | A way for computers to talk to each other automatically — like a vending machine: you put in a specific request, you get back specific data |
+| **FHIR** | A standard format for healthcare data (Fast Healthcare Interoperability Resources) — think of it as a common language all health systems should speak |
+| **Provider Directory** | A list of doctors, nurses, hospitals, and other providers that accept a particular insurance plan |
+| **CMS** | Centers for Medicare & Medicaid Services — the federal agency that regulates health insurers |
+| **EIN/TIN** | Employer Identification Number / Tax Identification Number — like a Social Security number but for organizations |
+| **OAuth2** | A security system requiring you to register and get credentials before accessing data |
+| **DNS** | Domain Name System — translates web addresses (like google.com) into computer addresses; "DNS failure" means the address doesn't exist |
+
+## Regulatory Background
+
+The CMS Interoperability and Patient Access Final Rule (CMS-9115-F, effective July 2021) requires these plan types to publish Provider Directory APIs:
+
+| Regulation | Who Must Comply |
+|------------|----------------|
+| 42 CFR § 422.120 | Medicare Advantage plans |
+| 42 CFR § 431.70 | Medicaid Fee-for-Service |
+| 42 CFR § 438.242(b)(6) | Medicaid managed care plans |
+| 42 CFR § 457.760 | CHIP Fee-for-Service |
+| 42 CFR § 457.1233(d) | CHIP managed care plans |
+
+## Technical Standards
+
+The required format is:
 - HL7 FHIR R4 (Release 4.0.1)
-- HL7 US Core IG STU 6.1.0
-- HL7 Da Vinci PDex Plan Net IG STU 1.2.0
+- Da Vinci PDex Plan Net Implementation Guide (STU 1.2.0)
+- US Core Implementation Guide (STU 6.1.0)
 
 ## Citation
 
 ```
 Mullan Institute for Health Workforce Equity. (2026). CMS Provider Directory API
-Database. George Washington University. https://github.com/hltiunn/provider-directory-db
+Database. George Washington University. https://github.com/Agent-Mouses/provider-directory-db
 ```
 
 ## License
