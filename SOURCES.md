@@ -88,7 +88,7 @@ All payer records in this database are sourced from verified, authoritative refe
 
 | Field | Value |
 |-------|-------|
-| Records corrected | 85+ |
+| Records corrected | 110+ |
 | Source key | `availity_discovery`, `edifecs_discovery`, `conduent_discovery` |
 | Date | June 11, 2026 |
 
@@ -123,12 +123,12 @@ Every endpoint was tested individually with a real HTTP GET request using Python
 
 Classification based on actual HTTP response:
 - `valid` (60) — HTTP 200 + JSON with `resourceType: CapabilityStatement`
-- `valid_non_fhir` (112) — HTTP 200 but not a standard CapabilityStatement (server confirmed live)
-- `auth_required` (337) — HTTP 401 or 403 (server confirmed, needs credentials)
-- `no_api` (30) — No api_base URL exists (plan never published a FHIR endpoint)
+- `valid_non_fhir` (129) — HTTP 200 but not a standard CapabilityStatement (server confirmed live)
+- `auth_required` (344) — HTTP 401 or 403 (server confirmed, needs credentials)
+- `no_api` (6) — No api_base URL exists (plan never published a FHIR endpoint)
 - `ip_restricted` (1) — Connection timeout/refused (server blocks external access)
 
-**Confirmation rate: 509/540 (94.3%)**
+**Confirmation rate: 533/540 (98.7%)**
 
 ---
 

@@ -74,9 +74,9 @@ Every single record was tested with a real HTTP request. Here's what the test re
 | Result | What Happened | Implication |
 |--------|---------------|-------------|
 | `valid` | Server returned proper FHIR CapabilityStatement | ✅ Fully working (60) |
-| `valid_non_fhir` | Server responded with 200 (non-standard metadata path) | ✅ Working, endpoint confirmed (112) |
-| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (337) |
-| `no_api` | No URL was ever published | ❌ Never implemented (30) |
+| `valid_non_fhir` | Server responded with 200 (non-standard metadata path) | ✅ Working, endpoint confirmed (129) |
+| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (344) |
+| `no_api` | No URL was ever published | ❌ Never implemented (6) |
 | `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible (1) |
 
 ## Data Sources
@@ -89,7 +89,7 @@ We compiled data from four official and verified sources:
 | CMS Universe Expansion | MCOs, CHIP, state Medicaid programs | 160 |
 | CMS MA Plan Directory | Official Medicare Advantage list (2026) | 105 |
 | CMS SMA Endpoint Directory | Official state Medicaid endpoints | 36 |
-| Availity/Edifecs/Conduent Discovery | Platform-level endpoint verification | 85+ corrected |
+| Availity/Edifecs/Conduent Discovery | Platform-level endpoint verification | 110+ corrected |
 
 See [SOURCES.md](SOURCES.md) for full citations.
 
