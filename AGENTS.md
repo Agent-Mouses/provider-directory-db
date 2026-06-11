@@ -30,20 +30,33 @@ A SQLite database tracking **all CMS-regulated payer Provider Directory FHIR API
 
 ## Schema Quick Reference
 
+Full data dictionary: **[SCHEMA.md](SCHEMA.md)** (41 columns, all documented)
+
 ```sql
 payers (
+    -- Identity
     id, org_tin, org_name, note, plan_name,
+    -- Plan type flags
+    is_medicare_advantage, is_medicaid_mco, is_chip, is_qhp,
+    -- Endpoints
     portal_url, api_base,
     endpoint_insurance_plan, endpoint_practitioner, endpoint_practitioner_role,
     endpoint_organization, endpoint_organization_affiliation, endpoint_location,
     endpoint_healthcare_service, endpoint_network, endpoint_endpoint,
+    -- Auth
     requires_registration, requires_api_key, auth_type,
+    -- Validation
     last_validated, last_validated_status, fhir_version,
+    -- Compliance
     compliance_flag, violation_type, violation_detail,
+    -- Data quality
+    data_quality_flag, data_quality_sample_npi,
+    data_quality_practitioner_count, data_quality_checked,
+    -- Provenance
     source, source_detail, source_url, source_date,
     created_at, updated_at,
-    data_quality_flag, data_quality_sample_npi,
-    data_quality_practitioner_count, data_quality_checked
+    -- Team tracking
+    id_provider_alt, team_status
 )
 ```
 

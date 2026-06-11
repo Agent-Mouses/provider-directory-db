@@ -92,6 +92,8 @@ The database (`data/provider_directory.db`) is a SQLite file. Each row represent
 
 **All data fields are verified** — no fabricated or guessed values. Where information cannot be confirmed from public sources, it is marked honestly (e.g., `UNDISCOVERABLE` for EINs not findable in public records).
 
+For the complete data dictionary with all 41 columns, see **[SCHEMA.md](SCHEMA.md)**.
+
 ## How We Verified Each Entry
 
 Every single record was tested with a real HTTP request. Here's what the test results mean:
