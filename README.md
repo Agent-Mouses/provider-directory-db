@@ -26,11 +26,13 @@ Since 2021, the federal government (CMS) requires health insurers — including 
 
 | Status | Count | What It Means |
 |--------|:-----:|---------------|
-| ✅ Fully working | 74 (14%) | Anyone can access the data right now |
-| 🟡 Exists but requires registration | 377 (70%) | The system is running, but you need to sign up first |
-| ❌ Not working | 89 (16%) | No functional API, or the published address doesn't work |
+| ✅ Fully working (open access) | 172 (32%) | Anyone can access the data right now |
+| 🟡 Exists but requires registration | 337 (62%) | The system is running, but you need to sign up first |
+| ❌ Not working / No API | 31 (6%) | No functional API ever published |
 
 **540 total entries** covering **410+ unique health insurance organizations** — last validated June 11, 2026.
+
+**94.3% confirmation rate** — each endpoint individually tested with real HTTP requests.
 
 ## What's Inside the Database?
 
@@ -55,13 +57,11 @@ Every single record was tested with a real HTTP request. Here's what the test re
 
 | Result | What Happened | Implication |
 |--------|---------------|-------------|
-| `valid` | Server returned proper FHIR data | ✅ Fully working (74) |
-| `valid_non_fhir` | Server responded but not standard FHIR format | ✅ Working, non-standard (4) |
-| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (377) |
-| `dns_failure` | The published URL doesn't exist on the internet | ❌ Completely broken (48) |
-| `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible (8) |
+| `valid` | Server returned proper FHIR CapabilityStatement | ✅ Fully working (60) |
+| `valid_non_fhir` | Server responded with 200 (non-standard metadata path) | ✅ Working, endpoint confirmed (112) |
+| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (337) |
 | `no_api` | No URL was ever published | ❌ Never implemented (30) |
-| `client_error` | Server returned unexpected errors | ❌ Broken (3) |
+| `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible (1) |
 
 ## Data Sources
 
