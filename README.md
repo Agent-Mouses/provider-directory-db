@@ -33,7 +33,7 @@ We sent an HTTP request to each payer's published API address.
 | Result | Count | Meaning |
 |--------|:-----:|---------|
 | ✅ Yes, server responds | 533 (98.7%) | The URL is real and the server is running |
-| ❌ No server found | 7 (1.3%) | No working URL exists (US territories + defunct plans) |
+| ❌ No server found | 7 (1.1%) | No working URL exists (US territories + defunct plans) |
 
 ### Step 2: Can you actually get provider data?
 
@@ -42,10 +42,10 @@ For the 533 that responded, we tried to query real provider records.
 | Result | Count | Meaning |
 |--------|:-----:|---------|
 | ✅ Real data returned | 11 (2%) | We received real doctor names/NPIs and verified them against the national registry |
-| 🔒 Blocked — login required | 516 (96%) | Server is there but demands OAuth credentials before showing any data |
+| 🔒 Blocked — login required | 587 (96%) | Server is there but demands OAuth credentials before showing any data |
 | ⚠️ Server errors or empty | 6 (1%) | Server broke (4) or returned nothing (2 — New Jersey) |
 
-**Bottom line:** 98.7% of payers technically have a server running. But only **2% actually let you see provider data without registering for credentials first.** The other 96% put real data behind an authentication wall.
+**Bottom line:** 98.9% of payers technically have a server running. But only **2% actually let you see provider data without registering for credentials first.** The other 96% put real data behind an authentication wall.
 
 ### What authentication methods are payers using?
 
@@ -55,14 +55,14 @@ CMS rule (85 FR 25543) says Provider Directory APIs **must be publicly accessibl
 |-------------|:-----:|:--------------:|---------------|
 | Open (no auth) | 46 | ✅ Yes | Anyone can query immediately |
 | API Key | 52 | ✅ Yes | Register app, get key, query freely |
-| OAuth2 Client Credentials | 403 | ✅ Yes | Register app, get client_id/secret, no user login |
+| OAuth2 Client Credentials | 474 | ✅ Yes | Register app, get client_id/secret, no user login |
 | OAuth2/SMART on FHIR | 21 | ❌ No | Requires individual user login — designed for patient access, not public directory |
 | None (no data served) | 12 | ⚠️ Unclear | Server responds but no data accessible |
 | N/A (no API) | 6 | ❌ Non-compliant | No endpoint exists |
 
 **Summary:**
-- **501 payers (93%)** use CMS-allowed auth (open + API key + client credentials)
-- **21 payers (4%)** use SMART on FHIR — **likely non-compliant** for Provider Directory (user-level auth)
+- **572 payers (94%)** use CMS-allowed auth (open + API key + client credentials)
+- **21 payers (3%)** use SMART on FHIR — **likely non-compliant** for Provider Directory (user-level auth)
 - **18 payers (3%)** have no functional access
 
 **The real issue isn't auth type — it's friction.** Even with CMS-compliant OAuth2 Client Credentials, developers must:
@@ -100,9 +100,9 @@ Every single record was tested with a real HTTP request. Here's what the test re
 
 | Result | What Happened | Implication |
 |--------|---------------|-------------|
-| `valid` | Server returned proper FHIR CapabilityStatement | ✅ Fully working (60) |
-| `valid_non_fhir` | Server responded with 200 (non-standard metadata path) | ✅ Working, endpoint confirmed (129) |
-| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (344) |
+| `valid` | Server returned proper FHIR CapabilityStatement | ✅ Fully working (61) |
+| `valid_non_fhir` | Server responded with 200 (non-standard metadata path) | ✅ Working, endpoint confirmed (200) |
+| `auth_required` | Server responded with 401/403 (access denied) | Server exists; needs credentials (343) |
 | `no_api` | No URL was ever published | ❌ Never implemented (6) |
 | `ip_restricted` | URL exists but blocks connections (firewall/VPN) | ❌ Not publicly accessible (1) |
 

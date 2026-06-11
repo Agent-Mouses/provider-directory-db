@@ -64,8 +64,8 @@ payers (
 
 | Flag | Count | Meaning |
 |------|-------|---------|
-| `COMPLIANT` | 189 | Open access, verified live |
-| `COMPLIANT_WITH_REGISTRATION` | 344 | Works but needs app registration |
+| `COMPLIANT` | 261 | Open access, verified live |
+| `COMPLIANT_WITH_REGISTRATION` | 343 | Works but needs app registration |
 | `NON_COMPLIANT` | 7 | Violates CMS interoperability rule |
 
 ## Violation Types
@@ -83,13 +83,13 @@ payers (
 
 | Status | Count | Meaning |
 |--------|-------|---------|
-| `valid` | 60 | FHIR CapabilityStatement returned (200 + valid JSON) |
-| `valid_non_fhir` | 129 | HTTP 200 but response is not a CapabilityStatement |
-| `auth_required` | 344 | Server responds 401/403 (needs registration) |
+| `valid` | 61 | FHIR CapabilityStatement returned (200 + valid JSON) |
+| `valid_non_fhir` | 200 | HTTP 200 but response is not a CapabilityStatement |
+| `auth_required` | 343 | Server responds 401/403 (needs registration) |
 | `no_api` | 6 | No api_base URL — plan never published one |
 | `ip_restricted` | 1 | Server exists but blocks by IP/firewall |
 
-**Server reachable: 533/540 (98.7%)**
+**Server reachable: 604/611 (98.9%)**
 
 **Note:** Previous statuses (`unreachable`, `not_found`, `timeout`, `ssl_error`, `client_error`) have been resolved by finding correct URLs. Most payers use **Availity** (`apps.availity.com/availity/public-fhir/`), **Edifecs** (`us120.fhir.m3.edifecsfedcloud.com/`), or **Conduent** platforms.
 

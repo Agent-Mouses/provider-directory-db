@@ -1,7 +1,7 @@
 # Data Dictionary — `payers` Table
 
 **Database:** `data/provider_directory.db` (SQLite)
-**Rows:** 540 | **Columns:** 41 | **Cell coverage:** 100%
+**Rows:** 611 | **Columns:** 41 | **Cell coverage:** 100%
 **Last validated:** June 11, 2026
 
 ---

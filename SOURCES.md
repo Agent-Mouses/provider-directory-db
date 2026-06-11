@@ -122,13 +122,13 @@ Every endpoint was tested individually with a real HTTP GET request using Python
 - TLS: Certificate verification disabled (some payers use self-signed certs)
 
 Classification based on actual HTTP response:
-- `valid` (60) — HTTP 200 + JSON with `resourceType: CapabilityStatement`
-- `valid_non_fhir` (129) — HTTP 200 but not a standard CapabilityStatement (server confirmed live)
-- `auth_required` (344) — HTTP 401 or 403 (server confirmed, needs credentials)
+- `valid` (61) — HTTP 200 + JSON with `resourceType: CapabilityStatement`
+- `valid_non_fhir` (200) — HTTP 200 but not a standard CapabilityStatement (server confirmed live)
+- `auth_required` (343) — HTTP 401 or 403 (server confirmed, needs credentials)
 - `no_api` (6) — No api_base URL exists (plan never published a FHIR endpoint)
 - `ip_restricted` (1) — Connection timeout/refused (server blocks external access)
 
-**Confirmation rate: 533/540 (98.7%)**
+**Confirmation rate: 604/611 (98.9%)**
 
 ---
 
