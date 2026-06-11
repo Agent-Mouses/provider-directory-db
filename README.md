@@ -34,6 +34,21 @@ Since 2021, the federal government (CMS) requires health insurers — including 
 
 **94.3% confirmation rate** — each endpoint individually tested with real HTTP requests.
 
+### Data Quality: Real Data vs Auth Walls
+
+We also tested whether each API actually returns **real provider data** (not dummy/placeholder responses):
+
+| Data Quality | Count | What It Means |
+|-------------|:-----:|---------------|
+| ✅ Verified real | 11 (2%) | NPIs returned were cross-verified against CMS NPPES Registry |
+| 🔒 Auth wall | 469 (87%) | Server exists but requires OAuth registration to access data |
+| ❓ Unverifiable | 27 (5%) | Server returned errors on data queries |
+| ❌ Empty/No API | 33 (6%) | Empty response or no endpoint published |
+
+**Key finding:** 87% of payers block unauthenticated data access despite CMS rule 85 FR 25543 requiring Provider Directory APIs to be publicly accessible without user authentication. App-level registration (OAuth client credentials) is permitted, but this creates a significant access barrier.
+
+To run the audit yourself: `python scripts/audit_data_quality.py --all`
+
 ## What's Inside the Database?
 
 The database (`data/provider_directory.db`) is a SQLite file. Each row represents one health plan or product line. Key information includes:

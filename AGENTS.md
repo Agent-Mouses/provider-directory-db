@@ -82,6 +82,7 @@ payers (
 |--------|---------|-------------|
 | `scripts/init_db.py` | Create/reset schema | First setup only |
 | `scripts/retest_all.py` | Real HTTP test ALL endpoints, update DB | Primary validation |
+| `scripts/audit_data_quality.py` | Verify real data vs dummy (NPI cross-check) | After endpoint validation |
 | `scripts/import_defacto.py` | Import Defacto 2024 spreadsheet | When Defacto updates |
 | `scripts/collect_endpoints.py` | Seed known payer endpoints | Initial setup |
 | `scripts/validate_endpoints.py` | Hit /metadata on all endpoints | Quick spot-check |
