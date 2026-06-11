@@ -26,27 +26,22 @@ Since 2021, the federal government (CMS) requires health insurers — including 
 
 | Status | Count | What It Means |
 |--------|:-----:|---------------|
-| ✅ Fully working (open access) | 189 (35%) | Anyone can access the data right now |
-| 🟡 Exists but requires registration | 344 (64%) | The system is running, but you need to sign up first |
-| ❌ Not working / No API | 7 (1%) | No functional API (territories + defunct plans) |
+| ✅ Server confirmed reachable | 533 (98.7%) | Endpoint responds to HTTP requests |
+| ❌ No API / Unreachable | 7 (1.3%) | No functional endpoint (territories + defunct plans) |
 
 **540 total entries** covering **410+ unique health insurance organizations** — last validated June 11, 2026.
 
-**98.7% confirmation rate** — each endpoint individually tested with real HTTP requests.
+### But Can You Actually Get Provider Data?
 
-### Data Quality: Real Data vs Auth Walls
-
-We also tested whether each API actually returns **real provider data** (not dummy/placeholder responses):
-
-| Data Quality | Count | What It Means |
+| Data Access | Count | What It Means |
 |-------------|:-----:|---------------|
-| ✅ Verified real | 11 (2%) | NPIs returned were cross-verified against CMS NPPES Registry |
-| 🔒 Auth wall | 516 (96%) | Server exists but requires OAuth registration to access data |
-| ❓ Unverifiable | 4 (<1%) | Server errors (HTTP 500, timeout) |
-| ⚠️ Empty | 2 (<1%) | Returns empty Bundle (NJ — possible staging API) |
-| ❌ No API | 6 (1%) | Territories (Guam, USVI) + defunct/tiny plans |
+| ✅ Open access — verified real data | 11 (2%) | NPIs cross-verified against CMS NPPES Registry |
+| 🔒 Behind auth wall | 516 (96%) | Server exists but requires OAuth registration first |
+| ❓ Server errors | 4 (<1%) | HTTP 500 or timeout |
+| ⚠️ Empty responses | 2 (<1%) | Returns empty Bundle (NJ — possible staging API) |
+| ❌ No API at all | 7 (1%) | Territories (Guam, USVI) + defunct/tiny plans |
 
-**Key finding:** 96% of payers block unauthenticated data access despite CMS rule 85 FR 25543 requiring Provider Directory APIs to be publicly accessible without user authentication. App-level registration (OAuth client credentials) is permitted, but this creates a significant access barrier.
+**Key finding:** While 98.7% of payers have a server running, only **2% provide openly accessible, verified real provider data**. The other 96% require OAuth app registration — which CMS rule 85 FR 25543 arguably prohibits for Provider Directory APIs.
 
 To run the audit yourself: `python scripts/audit_data_quality.py --all`
 
