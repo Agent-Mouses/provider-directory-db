@@ -49,22 +49,29 @@ For the 533 that responded, we tried to query real provider records.
 
 ### What authentication methods are payers using?
 
-CMS rule (85 FR 25543) says Provider Directory APIs **must be publicly accessible without requiring user authentication**. App-level registration (e.g., registering as a developer to get a client ID) is permitted under the rule — but individual user login is not.
+CMS rule (85 FR 25543) says Provider Directory APIs **must be publicly accessible without requiring user authentication**. App-level registration (e.g., registering as a developer to get a client ID) is permitted — but individual user login is not.
 
-| Auth Method | Count | CMS Allowed? |
-|-------------|:-----:|:------------:|
-| OAuth2 (generic) | 358 | ⚠️ Grey area — depends on implementation |
-| API Key | 52 | ✅ Yes — app-level, no user login |
-| Open (no auth at all) | 46 | ✅ Yes — fully compliant |
-| OAuth2 Client Credentials | 45 | ✅ Yes — app-level, no user involved |
-| OAuth2/SMART on FHIR | 21 | ❌ Likely non-compliant — designed for user-level access |
-| None (server exists but empty) | 12 | N/A |
-| No API | 6 | ❌ Non-compliant |
+| Auth Method | Count | CMS Compliant? | What It Means |
+|-------------|:-----:|:--------------:|---------------|
+| Open (no auth) | 46 | ✅ Yes | Anyone can query immediately |
+| API Key | 52 | ✅ Yes | Register app, get key, query freely |
+| OAuth2 Client Credentials | 403 | ✅ Yes | Register app, get client_id/secret, no user login |
+| OAuth2/SMART on FHIR | 21 | ❌ No | Requires individual user login — designed for patient access, not public directory |
+| None (no data served) | 12 | ⚠️ Unclear | Server responds but no data accessible |
+| N/A (no API) | 6 | ❌ Non-compliant | No endpoint exists |
 
-**Key distinction:**
-- **App-level auth** (API key, OAuth2 client credentials): You register your *application* once, then can query freely. CMS allows this.
-- **User-level auth** (SMART on FHIR, user login): Each *person* must authenticate. CMS **does not** allow this for Provider Directory.
-- **The problem:** 358 payers use generic "OAuth2" without specifying whether it's app-level or user-level. In practice, many require registration approval that can take days/weeks — creating a de facto access barrier.
+**Summary:**
+- **501 payers (93%)** use CMS-allowed auth (open + API key + client credentials)
+- **21 payers (4%)** use SMART on FHIR — **likely non-compliant** for Provider Directory (user-level auth)
+- **18 payers (3%)** have no functional access
+
+**The real issue isn't auth type — it's friction.** Even with CMS-compliant OAuth2 Client Credentials, developers must:
+1. Find the payer's developer portal
+2. Register an application (often requires manual approval)
+3. Wait for credentials (hours to weeks)
+4. Implement OAuth2 token flow
+
+This is technically allowed by CMS but creates a massive barrier compared to the 46 payers where you can query immediately with zero setup.
 
 To run the audit yourself: `python scripts/audit_data_quality.py --all`
 
