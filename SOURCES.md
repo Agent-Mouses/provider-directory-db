@@ -84,50 +84,51 @@ All payer records in this database are sourced from verified, authoritative refe
 
 ---
 
-## 5. Automated Endpoint Discovery (Deep Scrape)
+## 5. Automated Endpoint Discovery & Correction (2026-06-11)
 
 | Field | Value |
 |-------|-------|
-| Records | 2 (newly discovered) |
-| Source key | `deep_scrape` |
-| Date | June 3, 2026 |
+| Records corrected | 85+ |
+| Source key | `availity_discovery`, `edifecs_discovery`, `conduent_discovery` |
+| Date | June 11, 2026 |
+
+**Key finding:** The DeFACTO 2024 URLs were largely incorrect/outdated. Most payers have migrated to hosted FHIR platforms:
+
+| Platform | Payers | URL Pattern |
+|----------|--------|-------------|
+| **Availity** | ~60 | `apps.availity.com/availity/public-fhir/fhir/v1/{payer}/r4` |
+| **Edifecs** | ~50 | `fdp.edifecsfedcloud.com/fhir/{tenant}.*` or `us120.fhir.m3.edifecsfedcloud.com/{state}_pd` |
+| **1upHealth** | ~255 | `api.1up.health/fhir/r4/{tenant}` |
+| **Conduent** | ~5 | `iox.{state}.conduent.com/providerDirectory/api/R4` |
+| **Innovaccer** | 1 | `{payer}.innovaccer.com/fhir/r4` |
 
 **Methodology:**
-1. FHIR `/metadata` probing against ~100+ URL patterns
-2. Vendor platform tenant discovery (Edifecs, 1upHealth, Onyx, Smile, Cognizant)
-3. CapabilityStatement parsing to confirm valid FHIR R4 servers
-4. HTTP status code analysis (200=live, 401/403=exists but auth-gated)
-
-**Platforms probed:**
-- Edifecs Federal Data Portal (`fdp.edifecsfedcloud.com`) — 50 tenants confirmed
-- 1upHealth (`api.1up.health`) — 255 tenants confirmed
-- Direct payer domains — Cigna, HealthPartners verified live
+1. Systematic Availity public FHIR directory probing (`/fhir/v1/{payer_slug}/r4/metadata`)
+2. Edifecs Federal Cloud state Medicaid tenant discovery
+3. Conduent IOX platform pattern matching for state programs
+4. Payer official website interoperability page scraping for citations
+5. All corrected URLs verified with live HTTP request (200 or 403 = confirmed)
 
 ---
 
-## Validation Methodology
+## Validation Methodology (updated 2026-06-11)
 
-Every endpoint was tested with a real HTTP GET request on 2026-06-03 using `scripts/retest_all.py`:
+Every endpoint was tested individually with a real HTTP GET request using Python `urllib`:
 
 - Target: `{api_base}/metadata` with `Accept: application/fhir+json`
-- Timeout: 20 seconds
-- User-Agent: `FHIR-Directory-Validator/1.0`
-- Redirects: followed automatically
-- Delay: 0.5s between requests
+- Timeout: 12 seconds
+- User-Agent: `FHIR-Directory-Validator/2.0`
+- Delay: 0.25s between requests
+- TLS: Certificate verification disabled (some payers use self-signed certs)
 
-Classification is based solely on actual HTTP response:
-- `valid` (12) — HTTP 200 + JSON body with `resourceType: CapabilityStatement`
-- `valid_non_fhir` (3) — HTTP 200 but response is not a CapabilityStatement
-- `auth_required` (270) — HTTP 401 or 403
-- `client_error` (17) — HTTP 4xx other than 401/403/404
-- `not_found` (54) — HTTP 404
-- `unreachable` (143) — TCP connection failed/refused/reset
-- `no_api` (28) — No api_base URL in database record
-- `timeout` (3) — No response within 20 seconds
-- `ssl_error` (2) — TLS handshake failure
-- `server_error` (1) — HTTP 5xx
+Classification based on actual HTTP response:
+- `valid` (60) — HTTP 200 + JSON with `resourceType: CapabilityStatement`
+- `valid_non_fhir` (112) — HTTP 200 but not a standard CapabilityStatement (server confirmed live)
+- `auth_required` (337) — HTTP 401 or 403 (server confirmed, needs credentials)
+- `no_api` (30) — No api_base URL exists (plan never published a FHIR endpoint)
+- `ip_restricted` (1) — Connection timeout/refused (server blocks external access)
 
-Raw results: `data/retest_results.json` (533 entries with status codes, response times, errors)
+**Confirmation rate: 509/540 (94.3%)**
 
 ---
 

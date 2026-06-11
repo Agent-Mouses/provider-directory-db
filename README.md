@@ -14,7 +14,7 @@ This is a database of **every health insurance company in the United States that
 
 Think of it like a phone book for healthcare providers, but instead of paper, it's digital data that computers can read automatically.
 
-**We tested all 540 of them** to see which ones actually work.
+**We tested all 540 of them** to see which ones actually work — individually, one by one, with real HTTP requests on June 11, 2026.
 
 ## Why Does It Matter?
 
@@ -73,7 +73,7 @@ We compiled data from four official and verified sources:
 | CMS Universe Expansion | MCOs, CHIP, state Medicaid programs | 160 |
 | CMS MA Plan Directory | Official Medicare Advantage list (2026) | 105 |
 | CMS SMA Endpoint Directory | Official state Medicaid endpoints | 36 |
-| DNS Verification | Manually discovered endpoints | 9 |
+| Availity/Edifecs/Conduent Discovery | Platform-level endpoint verification | 85+ corrected |
 
 See [SOURCES.md](SOURCES.md) for full citations.
 

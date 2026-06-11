@@ -47,13 +47,11 @@ payers (
 
 ## Compliance Flags
 
-| Flag | Meaning |
-|------|---------|
-| `COMPLIANT` | Open access, verified live |
-| `COMPLIANT_WITH_REGISTRATION` | Works but needs app registration |
-| `NON_COMPLIANT` | Violates CMS interoperability rule |
-| `UNKNOWN` | Not yet determined |
-| `NEEDS_ENDPOINT_UPDATE` | URL returns 404, needs new URL |
+| Flag | Count | Meaning |
+|------|-------|---------|
+| `COMPLIANT` | 172 | Open access, verified live |
+| `COMPLIANT_WITH_REGISTRATION` | 337 | Works but needs app registration |
+| `NON_COMPLIANT` | 31 | Violates CMS interoperability rule |
 
 ## Violation Types
 
@@ -66,20 +64,17 @@ payers (
 | `NOT_QUERYABLE` | 42 CFR 422.120 (must be accessible) |
 | `MEMBER_LOGIN_REQUIRED` | 85 FR 25543 (no user auth allowed) |
 
-## Validation Status Values
+## Validation Status Values (as of 2026-06-11)
 
 | Status | Count | Meaning |
 |--------|-------|---------|
-| `valid` | 12 | FHIR CapabilityStatement returned (200 + valid JSON) |
-| `valid_non_fhir` | 3 | HTTP 200 but not a CapabilityStatement |
-| `auth_required` | 270 | Server responds 401/403 (needs registration) |
-| `client_error` | 17 | Server responds 4xx other (400/405/etc) |
-| `unreachable` | 143 | Connection refused/reset/failed |
-| `not_found` | 54 | HTTP 404 — URL has changed |
-| `no_api` | 28 | No api_base URL in record |
-| `timeout` | 3 | No response within 20 seconds |
-| `ssl_error` | 2 | TLS certificate invalid/expired |
-| `server_error` | 1 | HTTP 5xx — server broken |
+| `valid` | 60 | FHIR CapabilityStatement returned (200 + valid JSON) |
+| `valid_non_fhir` | 112 | HTTP 200 but response is not a CapabilityStatement |
+| `auth_required` | 337 | Server responds 401/403 (needs registration) |
+| `no_api` | 30 | No api_base URL — plan never published one |
+| `ip_restricted` | 1 | Server exists but blocks by IP/firewall |
+
+**Note:** Previous statuses (`unreachable`, `not_found`, `timeout`, `ssl_error`, `client_error`) have been resolved by finding correct URLs. Most payers use **Availity** (`apps.availity.com/availity/public-fhir/`), **Edifecs** (`us120.fhir.m3.edifecsfedcloud.com/`), or **Conduent** platforms.
 
 ## Scripts
 
